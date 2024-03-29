@@ -1,25 +1,24 @@
 
-import countries from "./data/countries.json";
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+
+import Quiz from "./components/Quiz/Quiz";
+
 
 function App() {
-
-  console.log(countries)
 
 
   return (
     <>
 
-<h1>{countries[25].name}</h1>
-<img src={`/svg/${countries[25].code2.toLowerCase()}.svg `}alt="bg" />
+      <BrowserRouter>
+     
+        <Routes>
+        <Route path="/" element={<> <Link to={"/quiz"} >Get started</Link> </>} />
+          <Route path="/quiz" element={<Quiz />} />
+        </Routes>
 
+      </BrowserRouter>
 
-
-
-
-      <p className="links">
-      https://github.com/stefanbinder <br />
-      https://github.com/hampusborgos
-      </p>
     </>
   )
 }
