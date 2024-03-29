@@ -17,8 +17,14 @@ export default function Quiz() {
     }, []);
 
 
-    const country = countryList[currentIndex];
-    const options = countryList.slice();
+    
+    const listCopy = countryList.slice();
+
+    let splicedList = listCopy.splice(0,4);
+
+    const options = splicedList.sort((a, b) => Math.random() - 0.5);
+
+    const country = options[currentIndex];
 
     const selectRandomCountries = () => {
         const selected = [];
@@ -52,14 +58,18 @@ export default function Quiz() {
         <>
 
         <h1>Scores: {scores}</h1>
+
+{listCopy &&  listCopy.map( item  => < p key={item.name} > ({item.name}) </p>)  }
+        
+
         {
         country ?   
                 <div>   
                     <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
+                    <h2>{country.name}</h2>
                 </div> : <> <h1>wait</h1> </>
         }
 
-     
                 <div>
                 {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>) }  
                 </div>
