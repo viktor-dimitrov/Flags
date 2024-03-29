@@ -2,34 +2,26 @@ import { useEffect, useState } from "react"
 import countriesData from "../../data/countries.json"
 
 
+import styles from "./Quiz.module.css"
 
 export default function Quiz() {
 
 
     const [countryList, setCountryList] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(null);
+    const [currentStage, setCurrentStage] = useState(0)
     const [scores, setScores] = useState(0);
-
 
     useEffect(() => {
         selectRandomCountries();
+        setCurrentIndex(randomIndex());
+    }, [currentStage]);
 
-    }, []);
-
-
-    
-    const listCopy = countryList.slice();
-
-    let splicedList = listCopy.splice(0,4);
-
-    const options = splicedList.sort((a, b) => Math.random() - 0.5);
-
-    const country = options[currentIndex];
 
     const selectRandomCountries = () => {
         const selected = [];
         const countryIndices = [];
-        while (countryIndices.length < 10) {
+        while (countryIndices.length < 4) {
             const randomIndex = Math.floor(Math.random() * countriesData.length);
             if (!countryIndices.includes(randomIndex)) {
                 countryIndices.push(randomIndex);
@@ -39,44 +31,43 @@ export default function Quiz() {
         setCountryList(selected);
     };
 
-
-    const moveToNextQuestion = () => {
-        if (currentIndex < countriesData.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        } else {
-            setQuizComplete(true);
-        }
-    };
-
     const answerHandler = (event) => {
-        (event.target.textContent) === country.name ? setScores( (scores) => scores + 1) : null
-        moveToNextQuestion();
-        }
+        (event.target.textContent) === country.name ? setScores((scores) => scores + 1) : null;
+        nextStage();
+        setCurrentIndex(randomIndex());
+    }
+
+    const randomIndex = () => {
+        const index = Math.floor(Math.random() * 4);
+        return index
+    }
+
+    const nextStage = () => {
+        setCurrentStage((stage) => stage + 1)
+    }
+
+
+    const country = countryList[currentIndex];
 
     return (
 
         <>
-
-        <h1>Scores: {scores}</h1>
-
-{listCopy &&  listCopy.map( item  => < p key={item.name} > ({item.name}) </p>)  }
-        
-
-        {
-        country ?   
-                <div>   
-                    <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
-                    <h2>{country.name}</h2>
-                </div> : <> <h1>wait</h1> </>
-        }
-
-                <div>
-                {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>) }  
-                </div>
+            <h1>Stage: {currentStage}</h1>
+            <h1>Scores: {scores}</h1>
 
 
-                </>
+            {
+                country ?
+                    <div className={styles.flag}>
+                        <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
+                    </div> : <> <h1>wait</h1> </>
+            }
+
+            <div>
+                {countryList.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>)}
+            </div>
+
+        </>
     )
 }
 
-{/* <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt="bg" /> */}
