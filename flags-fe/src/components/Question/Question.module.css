@@ -1,0 +1,34 @@
+
+.question {
+    width:40%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flag {
+    width:300px;
+    height:250px;
+    margin-bottom: 50px;
+}
+
+
+.flag img {
+    width:100%;
+    height:100%;
+    object-fit: fill;
+}
+
+.options {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.options button {
+    margin-bottom: 0.6em;
+    border-radius: 6px;
+    font-size: 1.2em;
+    font-weight: 600;
+}

@@ -1,72 +1,96 @@
 import { useEffect, useState } from "react"
-import countriesData from "../../data/countries.json"
+import countriesData from "../../assets/data/countries.json"
 
 
+import styles from "./Quiz.module.css"
+import Question from "../Question/Question";
+import FlagsBoard from "../FlagsBoard/FlagsBoard";
 
 export default function Quiz() {
 
 
-    const [countryList, setCountryList] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [gameList, setGameList] = useState([]);
+    const [options, setOptions] = useState([]);
+    const [currentStage, setCurrentStage] = useState(0);
     const [scores, setScores] = useState(0);
 
 
     useEffect(() => {
-        selectRandomCountries();
-
+        startGame()
     }, []);
 
+    const randomIndex = ( count ) => {
+        const index = Math.floor(Math.random() * count);
+        return index
+    }
 
-    const country = countryList[currentIndex];
-    const options = countryList.slice();
+    const startGame = () => {
+        const selectedList = selectRandomCountries(countriesData,44);
+        setGameList(selectedList);
+        setOptions(selectRandomCountries(selectedList, 4))
+    }
 
-    const selectRandomCountries = () => {
+    const selectRandomCountries = (list, count) => {
         const selected = [];
         const countryIndices = [];
-        while (countryIndices.length < 10) {
-            const randomIndex = Math.floor(Math.random() * countriesData.length);
+        let i = 0;
+        while (i < count && i < list.length) {
+            const randomIndex = Math.floor(Math.random() * list.length);
             if (!countryIndices.includes(randomIndex)) {
                 countryIndices.push(randomIndex);
-                selected.push(countriesData[randomIndex]);
+                selected.push(list[randomIndex]);
+                i++;
             }
         }
-        setCountryList(selected);
-    };
-
-
-    const moveToNextQuestion = () => {
-        if (currentIndex < countriesData.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        } else {
-            setQuizComplete(true);
-        }
+        return selected;
     };
 
     const answerHandler = (event) => {
-        (event.target.textContent) === country.name ? setScores( (scores) => scores + 1) : null
-        moveToNextQuestion();
-        }
+        const choice = event.target.textContent;
+        let newList = [];
+       
+        choice === country.name ? [
+            setScores((scores) => scores + 1),
+            newList = gameList.filter(country => country.name !== choice),
+            setGameList((list) =>  newList ),
+            setOptions(selectRandomCountries(newList, 4))
+        ] : setOptions(selectRandomCountries(gameList, 4));
+
+        nextStage();
+   
+    }
+
+    const nextStage = () => {
+        setCurrentStage((stage) => stage + 1)
+    }
+
+
+
+    const country = options[randomIndex(options.length)];
+
+
 
     return (
 
-        <>
+        <div>
 
-        <h1>Scores: {scores}</h1>
-        {
-        country ?   
-                <div>   
-                    <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
-                </div> : <> <h1>wait</h1> </>
-        }
+   
+            <h4>Stage: {currentStage}</h4>
+            <h4>Scores: {scores}</h4>
+            <h3>{country?.name}</h3>
 
+            <div  className={styles['quiz']}  >
+
+            <FlagsBoard gameList={gameList} />
+
+            <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
+
+
+            <FlagsBoard gameList={gameList} />
      
-                <div>
-                {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>) }  
-                </div>
+             </div>
 
-
-                </>
+        </div>
     )
 }
 
-{/* <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt="bg" /> */}
