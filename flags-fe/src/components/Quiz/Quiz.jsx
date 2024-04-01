@@ -3,6 +3,8 @@ import countriesData from "../../assets/data/countries.json"
 
 
 import styles from "./Quiz.module.css"
+import Question from "../Question/Question";
+import FlagsBoard from "../FlagsBoard/FlagsBoard";
 
 export default function Quiz() {
 
@@ -23,9 +25,6 @@ export default function Quiz() {
         const index = Math.floor(Math.random() * count);
         return index
     }
-
-  
-
 
     const selectRandomCountries = (list, count) => {
         const selected = [];
@@ -57,10 +56,6 @@ export default function Quiz() {
    
     }
 
- 
-
-
-
     const nextStage = () => {
         setCurrentStage((stage) => stage + 1)
     }
@@ -73,28 +68,25 @@ export default function Quiz() {
 
     return (
 
-        <>
+        <div>
+
+   
             <h4>Stage: {currentStage}</h4>
             <h4>Scores: {scores}</h4>
             <h3>{country?.name}</h3>
 
-            {
-                country ?
+            <div  className={styles['quiz']}  >
 
-                <>
-                    <div className={styles.flag}>
-                        <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
-                        
-                    </div>
-                    <div>
-                         {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>)}
-                    </div>
-                    </> : <> <h1>wait</h1> </>
-            }
+            <FlagsBoard countryList={countryList} />
 
+            <Question country={country} options={options} answerHandler={answerHandler} />
+
+
+            <FlagsBoard countryList={countryList} />
      
+             </div>
 
-        </>
+        </div>
     )
 }
 
