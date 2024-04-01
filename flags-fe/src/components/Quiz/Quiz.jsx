@@ -11,12 +11,14 @@ export default function Quiz() {
 
     const [gameList, setGameList] = useState([]);
     const [options, setOptions] = useState([]);
-    const [currentStage, setCurrentStage] = useState(0);
+    const [currentStage, setCurrentStage] = useState(1);
     const [scores, setScores] = useState(0);
+    const [isStarted, setIsStarted] = useState(false);
+    
 
 
     useEffect(() => {
-        startGame()
+        isStarted ? startGame() : null
     }, []);
 
     const randomIndex = ( count ) => {
@@ -24,11 +26,16 @@ export default function Quiz() {
         return index
     }
 
-    const startGame = () => {
-        const selectedList = selectRandomCountries(countriesData,44);
+   
+    const startGame = (event) => {
+        const region = String(event.target.textContent);
+        const selectedList = selectRandomCountries(countriesData.filter(country => country.region == String(region)),4);
         setGameList(selectedList);
-        setOptions(selectRandomCountries(selectedList, 4))
+        setOptions(selectRandomCountries(selectedList, 4));
+        setIsStarted(true);
     }
+
+
 
     const selectRandomCountries = (list, count) => {
         const selected = [];
@@ -72,25 +79,24 @@ export default function Quiz() {
 
     return (
 
-        <div>
+        isStarted ?
 
-   
+        <div>
             <h4>Stage: {currentStage}</h4>
             <h4>Scores: {scores}</h4>
             <h3>{country?.name}</h3>
-
             <div  className={styles['quiz']}  >
-
             <FlagsBoard gameList={gameList} />
-
             <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
-
-
             <FlagsBoard gameList={gameList} />
-     
              </div>
-
-        </div>
+        </div> : <div>
+         <button onClick={startGame} >Europe</button> 
+         <button onClick={startGame} >Asia</button> 
+         <button onClick={startGame} >Africa</button> 
+         <button onClick={startGame} >Americas</button> 
+         
+         </div>
     )
 }
 
