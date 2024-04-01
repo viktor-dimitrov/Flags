@@ -2,7 +2,7 @@
 
 import styles from "./Question.module.css";
 
-export default function Question ( {country, options, answerHandler}) {
+export default function Question ( {country, options, answerHandler, startGame}) {
 
     return (
 
@@ -14,7 +14,7 @@ export default function Question ( {country, options, answerHandler}) {
                 <div className={styles['options']} >
                     {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>)}
                 </div>
-        </section> : <h1>wait</h1>
+        </section> : <button onClick={startGame} >Start New Game</button>
 
       
     )

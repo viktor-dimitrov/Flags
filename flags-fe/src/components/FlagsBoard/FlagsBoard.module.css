@@ -4,15 +4,15 @@
 .flagsboard {
     width:20%;
     display:flex;
-
     flex-wrap: wrap;
+ 
 }
 
 .flagsboard-img {
     width:60px;
     height:40px;
- 
-
+    border: 2px solid black;
+  
 
 }
 

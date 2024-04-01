@@ -9,21 +9,25 @@ import FlagsBoard from "../FlagsBoard/FlagsBoard";
 export default function Quiz() {
 
 
-    const [countryList, setCountryList] = useState([]);
+    const [gameList, setGameList] = useState([]);
     const [options, setOptions] = useState([]);
     const [currentStage, setCurrentStage] = useState(0);
     const [scores, setScores] = useState(0);
 
 
     useEffect(() => {
-        const selectedList = selectRandomCountries(countriesData, 16);
-        setCountryList(selectedList);
-        setOptions(selectRandomCountries(selectedList, 4))
+        startGame()
     }, []);
 
     const randomIndex = ( count ) => {
         const index = Math.floor(Math.random() * count);
         return index
+    }
+
+    const startGame = () => {
+        const selectedList = selectRandomCountries(countriesData,44);
+        setGameList(selectedList);
+        setOptions(selectRandomCountries(selectedList, 4))
     }
 
     const selectRandomCountries = (list, count) => {
@@ -47,10 +51,10 @@ export default function Quiz() {
        
         choice === country.name ? [
             setScores((scores) => scores + 1),
-            newList = countryList.filter(country => country.name !== choice),
-            setCountryList((list) =>  newList ),
+            newList = gameList.filter(country => country.name !== choice),
+            setGameList((list) =>  newList ),
             setOptions(selectRandomCountries(newList, 4))
-        ] : setOptions(selectRandomCountries(countryList, 4));
+        ] : setOptions(selectRandomCountries(gameList, 4));
 
         nextStage();
    
@@ -77,12 +81,12 @@ export default function Quiz() {
 
             <div  className={styles['quiz']}  >
 
-            <FlagsBoard countryList={countryList} />
+            <FlagsBoard gameList={gameList} />
 
-            <Question country={country} options={options} answerHandler={answerHandler} />
+            <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
 
 
-            <FlagsBoard countryList={countryList} />
+            <FlagsBoard gameList={gameList} />
      
              </div>
 
