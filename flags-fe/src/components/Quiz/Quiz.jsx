@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import countriesData from "../../assets/data/countries.json"
 
-
-import styles from "./Quiz.module.css"
 import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
+import RegionButtons from "../RegionButtons/RegionButtons";
+
+import styles from "./Quiz.module.css"
 
 export default function Quiz() {
-
 
     const [gameList, setGameList] = useState([]);
     const [options, setOptions] = useState([]);
@@ -15,8 +15,6 @@ export default function Quiz() {
     const [scores, setScores] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
     
-
-
     useEffect(() => {
         isStarted ? startGame() : null
     }, []);
@@ -26,16 +24,13 @@ export default function Quiz() {
         return index
     }
 
-   
     const startGame = (event) => {
         const region = String(event.target.textContent);
-        const selectedList = selectRandomCountries(countriesData.filter(country => country.region == String(region)),4);
+        const selectedList = selectRandomCountries(countriesData.filter(country => country.region == String(region)),36);
         setGameList(selectedList);
         setOptions(selectRandomCountries(selectedList, 4));
         setIsStarted(true);
     }
-
-
 
     const selectRandomCountries = (list, count) => {
         const selected = [];
@@ -55,48 +50,35 @@ export default function Quiz() {
     const answerHandler = (event) => {
         const choice = event.target.textContent;
         let newList = [];
-       
         choice === country.name ? [
             setScores((scores) => scores + 1),
             newList = gameList.filter(country => country.name !== choice),
             setGameList((list) =>  newList ),
             setOptions(selectRandomCountries(newList, 4))
         ] : setOptions(selectRandomCountries(gameList, 4));
-
         nextStage();
-   
     }
 
     const nextStage = () => {
         setCurrentStage((stage) => stage + 1)
     }
 
-
-
     const country = options[randomIndex(options.length)];
-
-
 
     return (
 
         isStarted ?
 
         <div>
-            <h4>Stage: {currentStage}</h4>
-            <h4>Scores: {scores}</h4>
-            <h3>{country?.name}</h3>
-            <div  className={styles['quiz']}  >
-            <FlagsBoard gameList={gameList} />
-            <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
-            <FlagsBoard gameList={gameList} />
-             </div>
-        </div> : <div>
-         <button onClick={startGame} >Europe</button> 
-         <button onClick={startGame} >Asia</button> 
-         <button onClick={startGame} >Africa</button> 
-         <button onClick={startGame} >Americas</button> 
+            <p>Stage: {currentStage}</p>
+            <p>Scores: {scores}</p>
          
-         </div>
+            <div  className={styles['quiz']}  >
+                <FlagsBoard gameList={gameList} />
+                <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
+                <FlagsBoard gameList={gameList} />
+            </div>
+        </div> :  <RegionButtons startGame={startGame} />
     )
 }
 

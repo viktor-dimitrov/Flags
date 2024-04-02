@@ -1,4 +1,5 @@
 
+import RegionButtons from "../RegionButtons/RegionButtons";
 
 import styles from "./Question.module.css";
 
@@ -14,7 +15,7 @@ export default function Question ( {country, options, answerHandler, startGame})
                 <div className={styles['options']} >
                     {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>)}
                 </div>
-        </section> : <button onClick={startGame} >Start New Game</button>
+        </section> : <RegionButtons startGame={startGame} />
 
       
     )
