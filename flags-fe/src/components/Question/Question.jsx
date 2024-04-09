@@ -12,6 +12,7 @@ export default function Question ( {country, options, answerHandler, startGame})
                 <div className={styles['flag']} >
                     <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
                 </div>
+                <h2>{country.capital}</h2>
                 <div className={styles['options']} >
                     {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>)}
                 </div>
