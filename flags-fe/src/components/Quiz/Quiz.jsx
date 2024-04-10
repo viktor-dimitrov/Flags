@@ -27,7 +27,7 @@ export default function Quiz() {
 
     const startGame = (event) => {
         const region = String(event.target.textContent);
-        const selectedList = selectRandomCountries(countriesData.filter(country => country.region == String(region)),4);
+        const selectedList = selectRandomCountries(countriesData.filter(country => country.region == String(region)),36);
         setGameList(selectedList);
         setMyList([]);
         setCurrentStage(0);
@@ -80,9 +80,12 @@ export default function Quiz() {
             <p>Scores: {scores}</p>
          
             <div  className={styles['quiz']}  >
-                <FlagsBoard gameList={myList} />
+                <div className={styles['flagboards']}>
+                    <FlagsBoard list={myList} />
+                    <FlagsBoard list={gameList} />
+                </div>
+
                 <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
-                <FlagsBoard gameList={gameList} />
             </div>
         </div> :  <RegionButtons startGame={startGame} />
     )
