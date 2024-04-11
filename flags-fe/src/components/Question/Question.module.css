@@ -32,3 +32,12 @@
     font-size: 1.2em;
     font-weight: 600;
 }
+
+@media (max-width: 700px) {
+    .question {
+        width:90%;
+
+    }
+
+
+}
