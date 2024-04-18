@@ -1,21 +1,33 @@
 
 
 .quiz {
-    height: 90vh;
-    display:flex;
-    justify-content:space-evenly ;
+    height: 100vh;
+    /* overflow: hidden; */
+    position: relative;
+    padding:0.2em;
  
 }
 
-.flagboards {
-    width:40%;
+.gameboard {
+    width:100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    position: absolute;
     
 }
 
+.units {
+    background-color: rgb(153, 231, 121);
+    height: fit-content;
+    color: aliceblue;
+    padding: 1em;
+    font-size: 2em;
+   
+}
 
+
+
+/* 
 @media (max-width: 700px) {
     .quiz {
         flex-direction: column;
@@ -31,4 +43,4 @@
     }
 
 
-}
+} */

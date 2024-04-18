@@ -14,6 +14,8 @@ export default function Quiz() {
     const [scores, setScores] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
     const [myList, setMyList] = useState([]);
+
+    const [isCorrect, setIsCorrect] = useState('');
     
     useEffect(() => {
         isStarted ? startGame() : null
@@ -51,14 +53,14 @@ export default function Quiz() {
     const answerHandler = (event) => {
         const choice = event.target.textContent;
         let newList = [];
-      
+        
         choice === country.name ? [
             setScores((scores) => scores + 1),
             newList = gameList.filter(country => country.name !== choice),
             myList.push(gameList.find(country => country.name === choice)),
             setGameList((list) =>  newList ),
             setOptions(selectRandomCountries(newList, 4))
-        ] : setOptions(selectRandomCountries(gameList, 4));
+        ] : [setIsCorrect(''), setOptions(selectRandomCountries(gameList, 4))];
         nextStage();
     }
 
@@ -72,19 +74,25 @@ export default function Quiz() {
 
         gameList.length != 0 ?
 
-        <div>
-            <p>Stage: {currentStage}</p>
-            <p>Scores: {scores}</p>
+      
+
          
             <div  className={styles['quiz']}  >
-                <div className={styles['flagboards']}>
-                    <FlagsBoard list={myList} />
+                <div className={styles['gameboard']}>
+                    <FlagsBoard  list={myList} />
+
+                        <div className={styles['units']}>
+                            <p>Stage: {currentStage}</p>
+                            <p>Scores: {scores}</p>
+                       
+                        </div>
+
                     <FlagsBoard list={gameList} />
                 </div>
 
-                <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
+                <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} isCorrect={isCorrect} />
             </div>
-        </div> : <> <SetupQuiz startGame={startGame} /> </>
+        : <> <SetupQuiz startGame={startGame} /> </>
     )
 }
 
