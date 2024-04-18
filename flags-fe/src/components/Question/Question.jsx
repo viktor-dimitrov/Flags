@@ -1,5 +1,5 @@
 
-import RegionButtons from "../RegionButtons/RegionButtons";
+import SetupQuiz from "../SetupQuiz/SetupQuiz";
 
 import styles from "./Question.module.css";
 
@@ -15,7 +15,7 @@ export default function Question ( {country, options, answerHandler, startGame})
                 <div className={styles['options']} >
                     {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>)}
                 </div>
-        </section> : <RegionButtons startGame={startGame} />
+        </section> : <SetupQuiz startGame={startGame} />
 
       
     )
