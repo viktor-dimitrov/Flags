@@ -70,7 +70,7 @@ export default function Quiz() {
 
     return (
 
-        isStarted ?
+        gameList.length != 0 ?
 
         <div>
             <p>Stage: {currentStage}</p>
