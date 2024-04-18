@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
-import countriesData from "../../assets/data/countries.json"
 
 import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
-import RegionButtons from "../RegionButtons/RegionButtons";
 
 import styles from "./Quiz.module.css"
+import SetupQuiz from "../SetupQuiz/SetupQuiz";
 
 export default function Quiz() {
 
@@ -25,9 +24,7 @@ export default function Quiz() {
         return index
     }
 
-    const startGame = (event) => {
-        const region = String(event.target.textContent);
-        const selectedList = selectRandomCountries(countriesData.filter(country => country.region == String(region)),36);
+    const startGame = (selectedList) => {
         setGameList(selectedList);
         setMyList([]);
         setCurrentStage(0);
@@ -87,7 +84,7 @@ export default function Quiz() {
 
                 <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
             </div>
-        </div> :  <RegionButtons startGame={startGame} />
+        </div> : <> <SetupQuiz startGame={startGame} /> </>
     )
 }
 
