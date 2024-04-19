@@ -9,7 +9,7 @@ export default function FlagsBoard ({list}) {
 
         <div className={styles['flagsboard']} >
            { list.map( (country) =>  <div key={country.name} className={styles['img-container']} >
-                                                <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
+                                             <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />  
                                             </div> )}
         </div>
     )
