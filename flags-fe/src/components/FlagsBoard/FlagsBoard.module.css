@@ -2,12 +2,11 @@
 
 .flagsboard {
     display:flex;
-    flex-direction: column;
     align-items: center;
-    width:10%;
-    border-radius: 2em;
-    overflow: hidden;
- 
+    justify-content:flex-start;
+    width:100%;
+    overflow:hidden;
+    flex-wrap: wrap;
 }
 
 .img-container {

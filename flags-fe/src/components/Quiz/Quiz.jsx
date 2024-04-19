@@ -16,12 +16,12 @@ export default function Quiz() {
     const [myList, setMyList] = useState([]);
 
     const [isCorrect, setIsCorrect] = useState('');
-    
+
     useEffect(() => {
         isStarted ? startGame() : null
     }, []);
 
-    const randomIndex = ( count ) => {
+    const randomIndex = (count) => {
         const index = Math.floor(Math.random() * count);
         return index
     }
@@ -53,12 +53,12 @@ export default function Quiz() {
     const answerHandler = (event) => {
         const choice = event.target.textContent;
         let newList = [];
-        
+
         choice === country.name ? [
             setScores((scores) => scores + 1),
             newList = gameList.filter(country => country.name !== choice),
-            myList.push(gameList.find(country => country.name === choice)),
-            setGameList((list) =>  newList ),
+            myList.unshift(gameList.find(country => country.name === choice)),
+            setGameList((list) => newList),
             setOptions(selectRandomCountries(newList, 4))
         ] : [setIsCorrect(''), setOptions(selectRandomCountries(gameList, 4))];
         nextStage();
@@ -74,25 +74,24 @@ export default function Quiz() {
 
         gameList.length != 0 ?
 
-      
 
-         
-            <div  className={styles['quiz']}  >
-                <div className={styles['gameboard']}>
-                    <FlagsBoard  list={myList} />
 
-                        <div className={styles['units']}>
-                            <p>Stage: {currentStage}</p>
-                            <p>Scores: {scores}</p>
-                       
-                        </div>
 
-                    <FlagsBoard list={gameList} />
+            <div className={styles['quiz']}  >
+                <div className={styles['board']}>
+                    <div className={styles['gameboard']}>
+                        <FlagsBoard list={myList} />
+                        <p>Scores: {scores}</p>
+                    </div>
+
+                    <div className={styles['gameboard']}>
+                        <FlagsBoard list={gameList} />
+                    </div>
                 </div>
 
                 <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} isCorrect={isCorrect} />
             </div>
-        : <> <SetupQuiz startGame={startGame} /> </>
+            : <> <SetupQuiz startGame={startGame} /> </>
     )
 }
 
