@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content:space-between;
+    margin-top:auto;
 
  
 
@@ -24,6 +25,7 @@
     height:100%; 
     object-fit: fill;
 }
+
 
 .options {
     width:100%;

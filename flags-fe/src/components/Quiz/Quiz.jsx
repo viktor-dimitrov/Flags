@@ -74,31 +74,53 @@ export default function Quiz() {
 
     return (
 
-        gameList.length != 0 ?
-
-
-
-
+<>
+       { isStarted  &&
             <div className={styles['quiz']}  >
                 <div className={styles['board-container']}>
                     <div className={styles['board']} style={{ width: `${board}px`, height: `${board}px` }}>
                         <FlagsBoard list={myList} />
                     </div>
 
-                    <div className={styles['board']} style={{ width: `${board}px`, height: `${board}px` }}>
+                { gameList.length != 0 &&   <div className={styles['board']} style={{ width: `${board}px`, height: `${board}px` }}>
                         <FlagsBoard list={gameList} />
+                    </div> }
+                </div>
+
+            
+
+             <div className={styles['units']}>
+                    <div>
+                        <img src="/svg/checkmark-box-green-icon.svg" alt="scores" style={{ width: "50px" }} />
+                        <p>{scores}</p>
                     </div>
-                </div>
 
-                <div className={styles['units']}>
-                    <p>Scores: {scores}</p>
-                    <p>Tries: {currentStage}</p>
+                    <div>
+                        <img src="/svg/choose-icon.svg" alt="attempts" style={{ width: "80px" }} />
+                        <p>{currentStage}</p>
+                    </div>
 
-                </div>
+                    <div>
+                        <img src="/svg/flag-icon.svg" alt="remaining" style={{ width: "50px" }} />
+                        <p>{gameList.length}</p>
+                    </div>
 
+
+            </div> 
+
+            {options.length == 0 && <>
+            <p>Congratulations</p>
+            <p>If you want to keep playing</p>
+
+            </> }
                 <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} isCorrect={isCorrect} />
-            </div>
-            : <> <SetupQuiz startGame={startGame} /> </>
+            </div> }
+            
+            
+           { !isStarted &&<> <SetupQuiz startGame={startGame} /> </> }
+          
+
+            </>
     )
 }
 

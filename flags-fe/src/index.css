@@ -11,8 +11,11 @@
 }
 
 html {
-  background: rgb(202,209,224);
-  background: linear-gradient(90deg, rgba(202,209,224,1) 10%, rgba(241,242,246,1) 30%, rgba(241,242,246,1) 60%, rgba(202,209,224,1) 90%);
+
+  background: rgb(118,120,125);
+background: linear-gradient(90deg, rgba(118,120,125,1) 10%, rgba(207,209,215,1) 40%, rgba(207,209,215,1) 60%, rgba(118,120,125,1) 90%);
+  /* background: rgb(202,209,224);
+  background: linear-gradient(90deg, rgba(202,209,224,1) 10%, rgba(241,242,246,1) 30%, rgba(241,242,246,1) 60%, rgba(202,209,224,1) 90%); */
 }
 
 

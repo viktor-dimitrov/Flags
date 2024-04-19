@@ -4,30 +4,36 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .board-container {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 1em;
+   
+   
     
    
 }
 
 .board {
-    background-color: rgba(22, 187, 146, 0.849);
+    background-color: transparent;
     margin-top: 2em;
     border-radius: 1em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 
 
 .units {
-    background-color: rgba(22, 187, 146, 0.849);
-    height: fit-content;
-    color: aliceblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(0, 0, 0);
     padding: 1em;
     font-size: 2em;
+    text-align: center;
+
    
 }
 

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import countriesData from "../../assets/data/countries.json";
 
+import styles from "./SetupQuiz.module.css"
+
 export default function SetupQuiz({ startGame }) {
 
     const [gameConfig, setGameConfig] = useState({
@@ -17,15 +19,6 @@ export default function SetupQuiz({ startGame }) {
        
     }, [gameConfig])
 
-    // const selectRegion = (selectedRegion) => {
-    //     setGameConfig(config => ({ ...config, region: selectedRegion}) )
-    //     console.log(gameConfig)
-    // }
-
-    // const selectCount = (selectedCount) => {
-    //     setGameConfig(config => ({ ...config, count: selectedCount}) )
-    //     console.log(gameConfig)
-    // }
 
     const handleRegionChange = (selectedRegion) => {
         setGameConfig(config => ({ ...config, region: selectedRegion }))
@@ -63,10 +56,7 @@ export default function SetupQuiz({ startGame }) {
     return (
 
 
-        <>
-
-            <h1>Setup Quiz</h1>
-
+        <div className={styles['setup']} >
             <form onSubmit={handleSubmit}>
 
                 {!gameConfig.region ? <>
@@ -107,6 +97,6 @@ export default function SetupQuiz({ startGame }) {
             </form>
 
 
-        </>
+        </div>
     )
 }
