@@ -14,7 +14,7 @@ export default function SetupQuiz({ startGame }) {
     useEffect(() => {
 
         setCountries(selectRandomCountries(countriesData.filter(country => country.region == gameConfig.region), gameConfig.count))
-        console.log(countries)
+       
     }, [gameConfig])
 
     // const selectRegion = (selectedRegion) => {

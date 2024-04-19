@@ -14,6 +14,7 @@ export default function Quiz() {
     const [scores, setScores] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
     const [myList, setMyList] = useState([]);
+    const [board, setBoard] = useState(360)
 
     const [isCorrect, setIsCorrect] = useState('');
 
@@ -27,6 +28,7 @@ export default function Quiz() {
     }
 
     const startGame = (selectedList) => {
+        setBoard((Math.sqrt(selectedList.length) * 30));
         setGameList(selectedList);
         setMyList([]);
         setCurrentStage(0);
@@ -78,15 +80,20 @@ export default function Quiz() {
 
 
             <div className={styles['quiz']}  >
-                <div className={styles['board']}>
-                    <div className={styles['gameboard']}>
+                <div className={styles['board-container']}>
+                    <div className={styles['board']} style={{ width: `${board}px`, height: `${board}px` }}>
                         <FlagsBoard list={myList} />
-                        <p>Scores: {scores}</p>
                     </div>
 
-                    <div className={styles['gameboard']}>
+                    <div className={styles['board']} style={{ width: `${board}px`, height: `${board}px` }}>
                         <FlagsBoard list={gameList} />
                     </div>
+                </div>
+
+                <div className={styles['units']}>
+                    <p>Scores: {scores}</p>
+                    <p>Tries: {currentStage}</p>
+
                 </div>
 
                 <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} isCorrect={isCorrect} />

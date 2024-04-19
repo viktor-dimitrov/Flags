@@ -2,16 +2,10 @@
 
 .flagsboard {
     display:flex;
-    align-items: center;
-    justify-content:flex-start;
+    align-items: flex-end;
     width:100%;
     overflow:hidden;
     flex-wrap: wrap;
-}
-
-.img-container {
-   
-    padding: 0.1em 0;
 
 }
 
@@ -21,6 +15,7 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
+
 
 }
 
