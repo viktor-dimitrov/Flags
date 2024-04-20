@@ -2,6 +2,7 @@
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import Quiz from "./components/Quiz/Quiz";
+import Home from './components/Home/Home';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       <BrowserRouter>
      
         <Routes>
-        <Route path="/" element={<> <Link to={"/quiz"} >Get started</Link> </>} />
+          <Route path="/" element={<Home/>} />
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
 

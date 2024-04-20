@@ -73,7 +73,7 @@ export default function SetupQuiz({ startGame }) {
                     <label>
                         <input type="button" value="Americas" onClick={() => handleRegionChange("Americas")} />
                     </label>
-                </> : <p>{gameConfig.region}</p>}
+                </> : null}
 
                 {(gameConfig.region && !gameConfig.count) ? <>
                     <p>Choose Count:</p>
@@ -89,12 +89,22 @@ export default function SetupQuiz({ startGame }) {
                     <label>
                         <input type="button" value="36" onClick={() => handleCountChange(36)} />
                     </label>
-                </> : <p>{gameConfig.count}</p>}
+                </> : null}
 
+        
 
-                {gameConfig.count && <button type="submit">Start Game</button>}
+              
+
+                {gameConfig.count && <> <p>{gameConfig.count} flags </p>
+                    <p>from</p>
+                </>}
+                {gameConfig.region && <p>{gameConfig.region}</p>}
+                
+                {gameConfig.count && <button type="submit">Start</button>}
 
             </form>
+
+          
 
 
         </div>

@@ -180,15 +180,6 @@
     ]
   },
   {
-    "code2": "AX",
-    "code3": "ALA",
-    "name": "Åland Islands",
-    "capital": "Mariehamn",
-    "region": "Europe",
-    "subregion": "Northern Europe",
-    "states": []
-  },
-  {
     "code2": "AL",
     "code3": "ALB",
     "name": "Albania",
@@ -5646,15 +5637,6 @@
     ]
   },
   {
-    "code2": "GG",
-    "code3": "GGY",
-    "name": "Guernsey",
-    "capital": "St. Peter Port",
-    "region": "Europe",
-    "subregion": "Northern Europe",
-    "states": []
-  },
-  {
     "code2": "GN",
     "code3": "GIN",
     "name": "Guinea",
@@ -7374,15 +7356,6 @@
         "subdivision": null
       }
     ]
-  },
-  {
-    "code2": "JE",
-    "code3": "JEY",
-    "name": "Jersey",
-    "capital": "Saint Helier",
-    "region": "Europe",
-    "subregion": "Northern Europe",
-    "states": []
   },
   {
     "code2": "JO",
@@ -16591,15 +16564,6 @@
         "subdivision": null
       }
     ]
-  },
-  {
-    "code2": "SJ",
-    "code3": "SJM",
-    "name": "Svalbard and Jan Mayen",
-    "capital": "Longyearbyen",
-    "region": "Europe",
-    "subregion": "Northern Europe",
-    "states": []
   },
   {
     "code2": "SZ",

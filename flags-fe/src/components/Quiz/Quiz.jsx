@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
 
 import styles from "./Quiz.module.css"
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
+
 
 export default function Quiz() {
 
@@ -77,6 +79,7 @@ export default function Quiz() {
 <>
        { isStarted  &&
             <div className={styles['quiz']}  >
+              
                 <div className={styles['board-container']}>
                     <div className={styles['board']} style={{ width: `${board}px`, height: `${board}px` }}>
                         <FlagsBoard list={myList} />
@@ -91,33 +94,28 @@ export default function Quiz() {
 
              <div className={styles['units']}>
                     <div>
-                        <img src="/svg/checkmark-box-green-icon.svg" alt="scores" style={{ width: "50px" }} />
-                        <p>{scores}</p>
+                        <p>{scores} / {currentStage}</p>
                     </div>
 
-                    <div>
-                        <img src="/svg/choose-icon.svg" alt="attempts" style={{ width: "80px" }} />
-                        <p>{currentStage}</p>
-                    </div>
+            
 
-                    <div>
-                        <img src="/svg/flag-icon.svg" alt="remaining" style={{ width: "50px" }} />
+            { gameList.length != 0 &&    <div>
                         <p>{gameList.length}</p>
-                    </div>
-
-
+                    </div>}
             </div> 
 
             {options.length == 0 && <>
             <p>Congratulations</p>
-            <p>If you want to keep playing</p>
+            
+            <button className={styles['play-again']} onClick={() => setIsStarted(false)} >Play Again</button>
+            <Link to="/" className={styles['play-again']}>Home</Link>
 
             </> }
                 <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} isCorrect={isCorrect} />
             </div> }
             
             
-           { !isStarted &&<> <SetupQuiz startGame={startGame} /> </> }
+           { !isStarted && <> <SetupQuiz startGame={startGame} /> </> }
           
 
             </>

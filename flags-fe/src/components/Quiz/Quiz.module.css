@@ -1,26 +1,30 @@
 
 
 .quiz {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
+}
+
+.quiz p {
+    text-align: center;
+    font-size: 2em;
 }
 
 .board-container {
     display: flex;
     justify-content: space-around;
+
     margin-bottom: 1em;
-   
-   
-    
-   
+ 
+  
 }
 
 .board {
-    background-color: transparent;
     margin-top: 2em;
     border-radius: 1em;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    
 }
 
 
@@ -29,14 +33,34 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    color: rgb(0, 0, 0);
-    padding: 1em;
-    font-size: 2em;
-    text-align: center;
-
-   
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    color:aliceblue;
+    background: rgb(72, 83, 111);
+    background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%);
 }
 
+
+.play-again {
+    margin: 1em 0 0 0;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 600;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    color: aliceblue;
+    background: rgb(72, 83, 111);
+    background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%);
+
+
+    animation: swing 1s infinite alternate;
+}
+@keyframes swing {
+    0% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(2px);
+    }
+}
 
 
 /* 

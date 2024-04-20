@@ -8,10 +8,9 @@ export default function Question ( {country, options, answerHandler, startGame})
 
 
 
- 
     return (
 
-        country ? 
+        country &&
         <section className={styles['question']}>
                 <div className={styles['flag']} >
                     <img src={`/svg/${country.code2.toLowerCase()}.svg `} alt={country.name} />
@@ -19,7 +18,7 @@ export default function Question ( {country, options, answerHandler, startGame})
                 <div className={styles['options']} >
                     {options.map((country, index) => <button key={index} onClick={answerHandler} >{country.name}</button>)}
                 </div>
-        </section> : <SetupQuiz startGame={startGame} />
+        </section> 
 
       
     )
