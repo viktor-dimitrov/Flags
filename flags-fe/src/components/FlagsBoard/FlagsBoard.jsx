@@ -3,8 +3,6 @@ import styles from "./FlagsBoard.module.css";
 
 export default function FlagsBoard ({list, region, count, className}) {
 
-    console.log(className)
-
 const flagSize = Math.sqrt(count) * 30;
 
     return (
@@ -17,4 +15,3 @@ const flagSize = Math.sqrt(count) * 30;
     )
 }
 
-// styles[`${className}`]

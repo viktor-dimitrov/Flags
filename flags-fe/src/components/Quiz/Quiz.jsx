@@ -10,7 +10,7 @@ import styles from "./Quiz.module.css";
 
 export default function Quiz() {
 
-    const {selectRandomCountries, randomIndex} = useRandomSelector();
+    const { selectRandomCountries, randomIndex } = useRandomSelector();
 
     const [gameList, setGameList] = useState([]);
     const [options, setOptions] = useState([]);
@@ -22,7 +22,7 @@ export default function Quiz() {
         "region": null,
         "count": null
     });
- 
+
 
     useEffect(() => {
         isStarted ? startGame() : null
@@ -50,7 +50,7 @@ export default function Quiz() {
             myList.unshift(gameList.find(country => country.name === choice)),
             setGameList((list) => updatedList),
             setOptions(selectRandomCountries(updatedList, 4))
-        ] :  setOptions(selectRandomCountries(gameList, 4));
+        ] : setOptions(selectRandomCountries(gameList, 4));
 
         nextStage();
     }
@@ -63,43 +63,41 @@ export default function Quiz() {
 
     return (
 
-<>
-       { isStarted  &&
-            <div className={styles['quiz']}  >
-              
-                <div className={styles['board-container']}>
-                    <FlagsBoard list={myList} {...gameConfig} className="myList"/>
-                    { gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList"/> }
-                </div>
+        <>
+            {isStarted &&
+                <div className={styles['quiz']}  >
 
-
-             <div className={styles['units']}>
-                    <div>
-                        <p>{scores} / {currentStage}</p>
+                    <div className={styles['board-container']}>
+                        <FlagsBoard list={myList} {...gameConfig} className="myList" />
+                        {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>
 
-            
 
-            { gameList.length != 0 &&    <div>
-                        <p>{gameList.length}</p>
-                    </div>}
-            </div> 
+                    <div className={styles['units']}>
+                        <div>
+                            <p>{scores} / {currentStage}</p>
+                        </div>
 
-            {options.length == 0 && <>
-            <p>Congratulations</p>
-            
-            <button className={styles['play-again']} onClick={() => setIsStarted(false)} >Play Again</button>
-            <Link to="/" className={styles['play-again']}>Home</Link>
+                        {gameList.length != 0 && <div>
+                            <p>{gameList.length}</p>
+                        </div>}
+                    </div>
 
-            </> }
-                <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame}  />
-            </div> }
-            
-            
-           { !isStarted && <> <SetupQuiz startGame={startGame} /> </> }
-          
+                    {options.length == 0 && <>
+                        <p>Congratulations</p>
 
-            </>
+                        <button className={styles['play-again']} onClick={() => setIsStarted(false)} >Play Again</button>
+                        <Link to="/" className={styles['play-again']}>Home</Link>
+
+                    </>}
+                    <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
+                </div>}
+
+
+            {!isStarted && <> <SetupQuiz startGame={startGame} /> </>}
+
+
+        </>
     )
 }
 
