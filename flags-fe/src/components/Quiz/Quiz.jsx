@@ -10,7 +10,7 @@ import styles from "./Quiz.module.css";
 
 export default function Quiz() {
 
-    const {selectRandomCountries} = useRandomSelector();
+    const {selectRandomCountries, randomIndex} = useRandomSelector();
 
     const [gameList, setGameList] = useState([]);
     const [options, setOptions] = useState([]);
@@ -20,16 +20,9 @@ export default function Quiz() {
     const [myList, setMyList] = useState([]);
     const [board, setBoard] = useState(360)
 
-    const [isCorrect, setIsCorrect] = useState('');
-
     useEffect(() => {
         isStarted ? startGame() : null
     }, []);
-
-    const randomIndex = (count) => {
-        const index = Math.floor(Math.random() * count);
-        return index
-    }
 
     const startGame = (selectedList) => {
         setBoard((Math.sqrt(selectedList.length) * 30));
@@ -52,7 +45,7 @@ export default function Quiz() {
             myList.unshift(gameList.find(country => country.name === choice)),
             setGameList((list) => newList),
             setOptions(selectRandomCountries(newList, 4))
-        ] : [setIsCorrect(''), setOptions(selectRandomCountries(gameList, 4))];
+        ] :  setOptions(selectRandomCountries(gameList, 4));
         nextStage();
     }
 
@@ -99,7 +92,7 @@ export default function Quiz() {
             <Link to="/" className={styles['play-again']}>Home</Link>
 
             </> }
-                <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} isCorrect={isCorrect} />
+                <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame}  />
             </div> }
             
             

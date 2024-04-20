@@ -16,9 +16,15 @@ export const useRandomSelector = (list, count ) => {
         return selected;
     }
 
+    const randomIndex = (count) => {
+        const index = Math.floor(Math.random() * count);
+        return index
+    }
+
 
     return {
-        selectRandomCountries
+        selectRandomCountries,
+        randomIndex
     }
 
 
