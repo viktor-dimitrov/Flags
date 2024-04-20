@@ -32,7 +32,7 @@ export default function SetupQuiz({ startGame }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (countries) {
-            startGame(countries);
+            startGame(countries, gameConfig);
         }
     };
 

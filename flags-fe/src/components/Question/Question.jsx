@@ -4,7 +4,7 @@ import SetupQuiz from "../SetupQuiz/SetupQuiz";
 
 import styles from "./Question.module.css";
 
-export default function Question ( {country, options, answerHandler, startGame}) {
+export default function Question ( {country, options, answerHandler}) {
 
 
 
