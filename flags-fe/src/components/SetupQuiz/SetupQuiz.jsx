@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRandomSelector } from "../../hooks/useRandomSelector";
 
 import countriesData from "../../assets/data/countries.json";
 
@@ -6,17 +7,17 @@ import styles from "./SetupQuiz.module.css"
 
 export default function SetupQuiz({ startGame }) {
 
+    const {selectRandomCountries} = useRandomSelector();
+
     const [gameConfig, setGameConfig] = useState({
         "region": null,
         "count": null
     })
+
     const [countries, setCountries] = useState(null);
 
-
     useEffect(() => {
-
         setCountries(selectRandomCountries(countriesData.filter(country => country.region == gameConfig.region), gameConfig.count))
-       
     }, [gameConfig])
 
 
@@ -31,27 +32,11 @@ export default function SetupQuiz({ startGame }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (countries) {
-            startGame(countries);
+            startGame(countries, gameConfig);
         }
     };
 
-    // const selectedList = selectRandomCountries(countriesData.filter(country => country.region == selectedRegion),36);
-    // startGame(selectedList);
 
-    const selectRandomCountries = (list, count) => {
-        const selected = [];
-        const countryIndices = [];
-        let i = 0;
-        while (i < count && i < list.length) {
-            const randomIndex = Math.floor(Math.random() * list.length);
-            if (!countryIndices.includes(randomIndex)) {
-                countryIndices.push(randomIndex);
-                selected.push(list[randomIndex]);
-                i++;
-            }
-        }
-        return selected;
-    };
 
     return (
 
@@ -99,7 +84,7 @@ export default function SetupQuiz({ startGame }) {
                     <p>from</p>
                 </>}
                 {gameConfig.region && <p>{gameConfig.region}</p>}
-                
+
                 {gameConfig.count && <button type="submit">Start</button>}
 
             </form>
