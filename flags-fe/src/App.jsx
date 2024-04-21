@@ -18,7 +18,7 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
 
-        <Footer/>
+    
 
       </BrowserRouter>
 

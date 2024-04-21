@@ -18,41 +18,34 @@ export default function Home () {
 
 
     return (
-        <>
+        <div className={styles['wrapper']}>
             <main className={styles['home']}>
 
                 <header className={styles['header']}>
-                    <div> </div>
+                    <div>
+                         <h1>Guess the Flag</h1>
+                     </div>
                 </header>
-                <div className={styles['planet-cont']} >
-                <div className={styles['planet']} >
-                    <img src="/images/planet400.png" alt="banner" />
+
+                <div className={styles['flagballs-cont']} >
+                <div className={styles['flagballs']} >
+                    <img src="/images/11.png" alt="banner" />
                 </div>
                 </div>
+
+
            
             <nav>
-   
                 <ul>
-               
-                    <li>  <Link to={"/quiz"} >Guess the Flag</Link> </li>
+                    <li>  <Link to={"/quiz"} >Play</Link> </li>
                 </ul>
             </nav>
 
-
-            <div className={styles['boards-cont']}  >  
-              
-            <FlagsBoard list={countriesData} count={36} />
-
-            <FlagsBoard list={countriesData} count={25} />
-
-            <FlagsBoard list={countriesData} count={16} />
-
-            <FlagsBoard list={countriesData} count={9} />
-            </div>
-
-
         </main >
+
+        <Footer/>
+
        
-        </>
+        </div>
     )
 }
