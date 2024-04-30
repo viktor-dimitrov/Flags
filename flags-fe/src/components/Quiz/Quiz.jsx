@@ -41,6 +41,7 @@ export default function Quiz() {
 
 
     const answerHandler = (event) => {
+
         const choice = event.target.textContent;
         let updatedList = [];
 
