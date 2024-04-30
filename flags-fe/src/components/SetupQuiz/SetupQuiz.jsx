@@ -58,6 +58,8 @@ export default function SetupQuiz({ startGame }) {
                     <label>
                         <input type="button" value="Americas" onClick={() => handleRegionChange("Americas")} />
                     </label>
+
+
                 </> : null}
 
                 {(gameConfig.region && !gameConfig.count) ? <>
@@ -77,15 +79,21 @@ export default function SetupQuiz({ startGame }) {
                 </> : null}
 
         
-
+                {gameConfig.count && <button type="submit">Start</button>}
               
 
                 {gameConfig.count && <> <p>{gameConfig.count} flags </p>
-                    <p>from</p>
+         
                 </>}
-                {gameConfig.region && <p>{gameConfig.region}</p>}
+                {gameConfig.region && <>                                       
+                                        <p>{gameConfig.region}</p>
+                                            <div>
+                                                <img src={`/images/${gameConfig.region}.png`} alt={gameConfig.region} />
+                                            </div>
+                                      </>
+}
 
-                {gameConfig.count && <button type="submit">Start</button>}
+       
 
             </form>
 
