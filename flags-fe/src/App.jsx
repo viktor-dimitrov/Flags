@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import Quiz from "./components/Quiz/Quiz";
 import Home from './components/Home/Home';
-
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -18,7 +18,10 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
 
+    
+
       </BrowserRouter>
+
 
     </>
   )

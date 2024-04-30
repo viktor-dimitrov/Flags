@@ -2,33 +2,50 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 
+import countriesData from "../../assets/data/countries.json";
+
+
 import styles from "./Home.module.css";
+import FlagsBoard from "../FlagsBoard/FlagsBoard";
+import { useRandomSelector } from "../../hooks/useRandomSelector";
 
 
 
 export default function Home () {
 
+    const {selectRandomCountries} = useRandomSelector();
+
 
 
     return (
-        <main className={styles['home']}>
+        <div className={styles['wrapper']}>
+            <main className={styles['home']}>
 
-            <header className={styles['header']}>
-                <h1>colorcropp</h1>
-            </header>
-            <div>
-                <img src="/images/planet400.png" alt="banner" />
-            </div>
-        <nav>
-            <ul>
-                <li> <Link to={"/quiz"} >Guess the Flag</Link> </li>
-            </ul>
-        </nav>
-        
-<Footer/>
+                <header className={styles['header']}>
+                    <div>
+                         <h1>Guess the Flag</h1>
+                     </div>
+                </header>
+
+                <div className={styles['flagballs-cont']} >
+                <div className={styles['flagballs']} >
+                    <img src="/images/11.png" alt="banner" />
+                </div>
+                </div>
 
 
-     
-        </main>
+           
+            <nav>
+                <ul>
+                    <li>  <Link to={"/quiz"} >Play</Link> </li>
+                </ul>
+            </nav>
+
+        </main >
+
+        <Footer/>
+
+       
+        </div>
     )
 }

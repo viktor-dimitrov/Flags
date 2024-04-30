@@ -2,11 +2,26 @@
 
 .flagsboard {
     display:flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content:flex-end; 
+    align-content:flex-start; 
     width:100%;
     overflow:hidden;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
+    margin-top: 2em;
+    border-radius: 1em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 
+}
+
+.myList {
+    align-items: flex-start;
+    justify-content:flex-start;
+}
+
+.gameList {
+    flex-wrap:wrap-reverse;
 }
 
 .flagsboard img {
@@ -15,8 +30,6 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-
-
 }
 
 
