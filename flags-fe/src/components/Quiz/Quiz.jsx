@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
+import Quit from "../Quit/Quit";
 
 import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
 
 import styles from "./Quiz.module.css";
+
 
 export default function Quiz() {
 
@@ -66,6 +68,8 @@ export default function Quiz() {
     return (
 
         <>
+
+        <Quit/>
             {isStarted &&
                 <div className={styles['quiz']}  >
 

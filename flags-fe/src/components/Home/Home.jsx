@@ -39,6 +39,9 @@ export default function Home () {
                 <ul>
                     <li>  <Link to={"/quiz"} >Play</Link> </li>
                 </ul>
+                <ul>
+                    <li>  <Link to={"/countries-list"} >Countries List</Link> </li>
+                </ul>
             </nav>
 
         </main >

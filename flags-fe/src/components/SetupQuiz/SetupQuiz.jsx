@@ -5,6 +5,7 @@ import countriesData from "../../assets/data/countries.json";
 
 import styles from "./SetupQuiz.module.css";
 
+
 const regions = ["World", "Europe", "Asia", "Africa", "Americas"]
 
 export default function SetupQuiz({ startGame }) {
@@ -101,7 +102,7 @@ export default function SetupQuiz({ startGame }) {
             </form>
 
           
-
+      
 
         </div>
     )
