@@ -17,11 +17,12 @@ export default function SetupQuiz({ startGame }) {
     const [countries, setCountries] = useState(null);
 
     useEffect(() => {
-        setCountries(selectRandomCountries(countriesData.filter(country => country.region == gameConfig.region), gameConfig.count))
+        setCountries(selectRandomCountries( gameConfig.region != "World" ? countriesData.filter(country => country.region == gameConfig.region) : countriesData, gameConfig.count))
     }, [gameConfig])
 
 
     const handleRegionChange = (selectedRegion) => {
+        console.log(selectedRegion)
         setGameConfig(config => ({ ...config, region: selectedRegion }))
     };
 
@@ -57,6 +58,9 @@ export default function SetupQuiz({ startGame }) {
                     </label>
                     <label>
                         <input type="button" value="Americas" onClick={() => handleRegionChange("Americas")} />
+                    </label>
+                    <label>
+                        <input type="button" value="World" onClick={() => handleRegionChange("World")} />
                     </label>
 
 

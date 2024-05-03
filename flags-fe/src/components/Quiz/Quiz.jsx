@@ -30,6 +30,7 @@ export default function Quiz() {
 
 
     const startGame = (selectedList, gameConfig) => {
+        console.log(selectedList)
         setGameConfig(gameConfig);
         setGameList(selectedList);
         setMyList([]);
