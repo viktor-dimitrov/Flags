@@ -23,7 +23,7 @@ export default function Home () {
 
                 <header className={styles['header']}>
                     <div>
-                         <h1>Guess the Flag</h1>
+                         <h1>Country Quiz</h1>
                      </div>
                 </header>
 
@@ -37,10 +37,11 @@ export default function Home () {
            
             <nav>
                 <ul>
-                    <li>  <Link to={"/quiz"} >Play</Link> </li>
-                </ul>
-                <ul>
-                    <li>  <Link to={"/countries-list"} >Countries List</Link> </li>
+                    <li>  <Link to={"/quiz-flags"} >Guess The Flag</Link> </li>
+              
+                    <li>  <Link to={"/quiz-capitals"} >Guess The Capital</Link> </li>
+               
+                    <li className={styles['countries-list']} >  <Link to={"/countries-list"} >Countries List</Link> </li>
                 </ul>
             </nav>
 

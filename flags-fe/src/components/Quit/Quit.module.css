@@ -2,9 +2,9 @@
 
 .quit {
     display: block;
-    width:10em;
-    margin:0.2em 1em;
-    padding: 0 1em;
+    width:8em;
+    margin:0.2em;
+    padding: 0 0 0 1em;
 }
 
 .quit img {

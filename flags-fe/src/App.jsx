@@ -15,7 +15,8 @@ function App() {
      
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/quiz-flags" element={<Quiz type="flag" />} />
+          <Route path="/quiz-capitals" element={<Quiz type="capital" />} />
           <Route path="/countries-list" element={<ListOfCountries />} />
         </Routes>
 
