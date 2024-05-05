@@ -29,7 +29,7 @@ export default function Home () {
 
                 <div className={styles['flagballs-cont']} >
                 <div className={styles['flagballs']} >
-                    <img src="/images/11.png" alt="banner" />
+                    <img src="/images/countries-wallpaper.png" alt="banner" />
                 </div>
                 </div>
 

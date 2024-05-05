@@ -12,6 +12,7 @@ import styles from "./Quiz.module.css";
 
 export default function Quiz() {
 
+ 
     const { selectRandomCountries, randomIndex } = useRandomSelector();
 
     const [gameList, setGameList] = useState([]);
@@ -27,6 +28,7 @@ export default function Quiz() {
 
 
     useEffect(() => {
+       
         isStarted ? startGame() : null
     }, []);
 

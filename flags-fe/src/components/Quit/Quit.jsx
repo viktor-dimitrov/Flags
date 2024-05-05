@@ -7,7 +7,7 @@ export default function Quit () {
 
     return (
         <>
-           <Link to="/" className={styles['quit']}>Quit</Link>
+           <Link to="/" className={styles['quit']}><img src="/images/cancel1.png" alt="quit" /> </Link>
         </>
     )
 }
