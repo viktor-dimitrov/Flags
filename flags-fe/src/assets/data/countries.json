@@ -666,7 +666,7 @@
     "code2": "AQ",
     "code3": "ATA",
     "name": "Antarctica",
-    "capital": "",
+    "capital": "Antarctica",
     "region": "Polar",
     "subregion": "",
     "states": []
@@ -1833,15 +1833,7 @@
       }
     ]
   },
-  {
-    "code2": "BV",
-    "code3": "BVT",
-    "name": "Bouvet Island",
-    "capital": "",
-    "region": "",
-    "subregion": "",
-    "states": []
-  },
+
   {
     "code2": "BR",
     "code3": "BRA",
@@ -5761,15 +5753,7 @@
       }
     ]
   },
-  {
-    "code2": "HM",
-    "code3": "HMD",
-    "name": "Heard Island and McDonald Islands",
-    "capital": "",
-    "region": "",
-    "subregion": "",
-    "states": []
-  },
+
   {
     "code2": "VA",
     "code3": "VAT",
@@ -8782,15 +8766,7 @@
       }
     ]
   },
-  {
-    "code2": "MO",
-    "code3": "MAC",
-    "name": "Macau",
-    "capital": "",
-    "region": "Asia",
-    "subregion": "Eastern Asia",
-    "states": []
-  },
+
   {
     "code2": "MK",
     "code3": "MKD",

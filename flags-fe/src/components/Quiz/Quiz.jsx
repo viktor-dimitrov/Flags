@@ -10,8 +10,9 @@ import SetupQuiz from "../SetupQuiz/SetupQuiz";
 import styles from "./Quiz.module.css";
 
 
-export default function Quiz() {
+export default function Quiz(quizType) {
 
+ 
     const { selectRandomCountries, randomIndex } = useRandomSelector();
 
     const [gameList, setGameList] = useState([]);
@@ -27,12 +28,12 @@ export default function Quiz() {
 
 
     useEffect(() => {
+       
         isStarted ? startGame() : null
     }, []);
 
 
     const startGame = (selectedList, gameConfig) => {
-        console.log(selectedList)
         setGameConfig(gameConfig);
         setGameList(selectedList);
         setMyList([]);
@@ -43,15 +44,15 @@ export default function Quiz() {
     }
 
 
-    const answerHandler = (event) => {
+    const answerHandler = (countryCode) => {
 
-        const choice = event.target.textContent;
+        const choice = countryCode
         let updatedList = [];
 
-        choice === country.name ? [
+        choice === country.code3 ? [
             setScores((scores) => scores + 1),
-            updatedList = gameList.filter(country => country.name !== choice),
-            myList.unshift(gameList.find(country => country.name === choice)),
+            updatedList = gameList.filter(country => country.code3 !== choice),
+            myList.unshift(gameList.find(country => country.code3 === choice)),
             setGameList((list) => updatedList),
             setOptions(selectRandomCountries(updatedList, 4))
         ] : setOptions(selectRandomCountries(gameList, 4));
@@ -69,7 +70,10 @@ export default function Quiz() {
 
         <>
 
-        <Quit/>
+        <div className={styles['game-header']} >
+            <p className={styles['game-type']}>Geuss the {quizType.type}</p>
+             <Quit/>
+        </div>
             {isStarted &&
                 <div className={styles['quiz']}  >
 
@@ -80,13 +84,29 @@ export default function Quiz() {
 
 
                     <div className={styles['units']}>
-                        <div>
-                            <p>{scores} / {currentStage}</p>
-                        </div>
+                     
+                            <ul >
+                                <li>
+                                    <span>correct</span>
+                                    <p>{scores} </p>
+                                </li>
 
-                        {gameList.length != 0 && <div>
-                            <p>{gameList.length}</p>
-                        </div>}
+                                <li>
+                                    <span>attempts</span>
+                                    <p>{currentStage} </p>
+                                </li>
+                            
+                                   
+                            {gameList.length != 0 && <li>
+                                <span>remaining</span>
+                                <p>{gameList.length}</p>
+                            </li>}
+                               
+                            </ul>
+                        
+                       
+
+            
                     </div>
 
                     {options.length == 0 && <>
@@ -96,7 +116,7 @@ export default function Quiz() {
                         <Link to="/" className={styles['play-again']}>Home</Link>
 
                     </>}
-                    <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
+                    <Question country={country} options={options} answerHandler={answerHandler} quizType={quizType} />
                 </div>}
 
 

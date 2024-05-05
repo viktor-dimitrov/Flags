@@ -6,17 +6,18 @@
     flex-direction: column;
     align-items: center;
     justify-content:space-between;
-    margin-top: auto;
-
- 
-
+    /* margin-top: auto; */
 }
+
+.country-name {
+    font-size: 1.4em;
+}
+
 
 .flag {
     width:70%;
     height:40%;
-    margin-bottom: 10%;
- 
+    margin-bottom: 1em;
     overflow: hidden;
     
 }

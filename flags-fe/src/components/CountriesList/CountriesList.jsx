@@ -8,9 +8,11 @@ export default function CountriesList () {
 
 return (
     <>
-
-<Quit/>
-    <h1>Countries List</h1>
+        <div className={styles['game-header']} >
+            <p className={styles['game-type']}>Countries List</p>
+             <Quit/>
+        </div>
+   
 
     <ol>
    { countriesData.map(country => <li key={country.name} className={styles['country']}>

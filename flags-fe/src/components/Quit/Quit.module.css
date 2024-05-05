@@ -1,8 +1,15 @@
 
 
 .quit {
-    color:red;
-    margin:0 1em;
-    background-color: rgb(16, 24, 24);
-    padding: 0 1em;
+    display: block;
+    width:8em;
+    margin:0.2em;
+    padding: 0 0 0 1em;
+}
+
+.quit img {
+    display: block;
+    width:100%;
+    height: 100%;
+    object-fit: cover;
 }
