@@ -7,9 +7,9 @@
     height: 100vh;
 }
 
-.home {
+/* .home {
     padding-top: 1em;
-}
+} */
 
 .header {
     background: rgb(72, 83, 111);
@@ -33,6 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1em 2em;
 }
 
 
