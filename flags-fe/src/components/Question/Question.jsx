@@ -6,8 +6,6 @@ import styles from "./Question.module.css";
 
 export default function Question ( {country, options, answerHandler, quizType}) {
 
-
-console.log(quizType.type)
     return (
 
         country &&

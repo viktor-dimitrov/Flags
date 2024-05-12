@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
-import Quit from "../Quit/Quit";
 
+import { useLoading } from "../../hooks/useLoading";
+
+import Quit from "../Quit/Quit";
 import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
+import Loader from "../Loader/Loader";
 
 import styles from "./Quiz.module.css";
 
@@ -14,6 +17,7 @@ export default function Quiz(quizType) {
 
  
     const { selectRandomCountries, randomIndex } = useRandomSelector();
+    const { isLoading, handleLoad } = useLoading();
 
     const [gameList, setGameList] = useState([]);
     const [options, setOptions] = useState([]);
@@ -70,14 +74,17 @@ export default function Quiz(quizType) {
 
         <>
 
-        <div className={styles['game-header']} >
+      
+
+        <div className={styles['game-header']}>
             <p className={styles['game-type']}>Geuss the {quizType.type}</p>
              <Quit/>
         </div>
-            {isStarted &&
-                <div className={styles['quiz']}  >
-
-                    <div className={styles['board-container']}>
+            {(isStarted && isLoading) && <Loader/>}
+            {isStarted && 
+                <div className={styles['quiz']} onLoad={()=>handleLoad(false)} style={{ display: isLoading ? 'none' : 'block' }}     >
+                    <div className={styles['board-container']} >
+                   
                         <FlagsBoard list={myList} {...gameConfig} className="myList" />
                         {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>

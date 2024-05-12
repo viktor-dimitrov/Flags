@@ -1,38 +1,41 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLoading } from "../../hooks/useLoading";
+
 import Footer from "../Footer/Footer";
-
-
-import countriesData from "../../assets/data/countries.json";
-
+import Loader from "../Loader/Loader";
 
 import styles from "./Home.module.css";
-import FlagsBoard from "../FlagsBoard/FlagsBoard";
-import { useRandomSelector } from "../../hooks/useRandomSelector";
-
 
 
 export default function Home () {
 
-    const {selectRandomCountries} = useRandomSelector();
+    const { isLoading, handleLoad } = useLoading();
 
-
-
+  
     return (
         <div className={styles['wrapper']}>
-            <main className={styles['home']}>
+                 {isLoading && <Loader/>}
+            <main className={styles['home']} onLoad={() => handleLoad(false)} style={{ display: isLoading ? 'none' : 'block' }}>
+                    
+                    
 
                 <header className={styles['header']}>
                     <div>
-                         <h1>Country Quiz</h1>
-                     </div>
+                        <h1>Country Quiz</h1>
+                    </div>
                 </header>
 
                 <div className={styles['flagballs-cont']} >
-                <div className={styles['flagballs']} >
-                    <img src="/images/countries-wallpaper.png" alt="banner" />
-                </div>
+                    <div className={styles['flagballs']} >
+                   
+                        <img src="/images/flags-wall.png"
+                            alt="wallpapper"
+                            />
+                    </div>
                 </div>
 
+                
 
            
             <nav>
