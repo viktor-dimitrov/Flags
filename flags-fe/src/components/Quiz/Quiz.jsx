@@ -95,18 +95,34 @@ export default function Quiz(quizType) {
                             <ul >
                                 <li>
                                     <span>correct</span>
-                                    <p>{scores} </p>
+                                    <p > 
+                                    <img src="svg/tick-mark-icon.svg" alt="true" /> {scores}
+                                        
+                                     </p>
+                                </li>
+
+                                <li>
+                                    <span>wrong</span>
+                                    <p > 
+                                    <img src="svg/incorrect-icon.svg" alt="false" /> {currentStage - scores}
+                                        
+                                     </p>
                                 </li>
 
                                 <li>
                                     <span>attempts</span>
-                                    <p>{currentStage} </p>
+                               
+                                    <p>
+                                    <img src="svg/cursor-hand-icon.svg" alt="try" /> {currentStage}
+                                     </p>
                                 </li>
                             
                                    
                             {gameList.length != 0 && <li>
                                 <span>remaining</span>
-                                <p>{gameList.length}</p>
+                                <p>
+                                <img src="svg/database-icon.svg" alt="try" />{gameList.length}
+                                </p>
                             </li>}
                                
                             </ul>
@@ -117,7 +133,7 @@ export default function Quiz(quizType) {
                     </div>
 
                     {options.length == 0 && <>
-                        <p>Congratulations</p>
+                        <p className={styles['greating']} >Game Over,<br /> You Rocked it!</p>
 
                         <button className={styles['play-again']} onClick={() => setIsStarted(false)} >Play Again</button>
                         <Link to="/" className={styles['play-again']}>Home</Link>
