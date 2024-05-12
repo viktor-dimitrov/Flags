@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
+import { useLoading } from "../../hooks/useLoading";
 
 import countriesData from "../../assets/data/countries.json";
 
+import Loader from "../Loader/Loader";
+
 import styles from "./SetupQuiz.module.css";
+
 
 
 const regions = ["World", "Europe", "Asia", "Africa", "Americas"]
 
 export default function SetupQuiz({ startGame }) {
 
-    const {selectRandomCountries} = useRandomSelector();
+    const { selectRandomCountries } = useRandomSelector();
+    const { isLoading, handleLoad } = useLoading();
 
     const [gameConfig, setGameConfig] = useState({
         "region": "World",
@@ -22,15 +27,17 @@ export default function SetupQuiz({ startGame }) {
     const [countries, setCountries] = useState(null);
 
     useEffect(() => {
-        setCountries(selectRandomCountries( gameConfig.region != "World" ? countriesData.filter(country => country.region == gameConfig.region) : countriesData, gameConfig.count))
+    
+        setCountries(selectRandomCountries( gameConfig.region != "World" ? countriesData.filter(country => country.region == gameConfig.region) : countriesData, gameConfig.count));
+       
     }, [gameConfig])
 
 
     const handleRegionChange = (selectedRegion) => {
-       
+        handleLoad(true);
+        console.log(isLoading)
         setGameConfig(config => ({ ...config, region: selectedRegion }));
         setActiveRegion(activeRegion => selectedRegion.toLowerCase());
-        console.log(activeRegion)
     };
 
     const handleCountChange = (selectedCount) => {
@@ -90,10 +97,12 @@ export default function SetupQuiz({ startGame }) {
                 {gameConfig.region && <button className={styles['start-btn']} type="submit">Start</button>}
               
 
-                {gameConfig.region && <>                                       
-                                            <div className={styles['region-img']}>
-                                                <img src={`/images/${gameConfig.region}.png`} alt={gameConfig.region} />
-                                            </div>
+                {gameConfig.region && <> 
+                                    {isLoading && <Loader/> }     
+                                    <div className={styles['region-img']} onLoad={() => handleLoad(false)} style={{ display: isLoading ? 'none' : 'block' }}  >
+                                            <img src={`/images/${gameConfig.region}.png`} alt={gameConfig.region} />
+                                        </div>                                 
+                               
                                       </>
 }
 
