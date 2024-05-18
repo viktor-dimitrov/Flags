@@ -60,6 +60,21 @@
  
 }
 
+.accuracy {
+    display: flex;
+    align-items: center;
+    padding:1em;
+    font-size: 2em;
+    gap:1em;
+
+}
+
+.accuracy img {
+    display:block;
+    width: 4em;
+ 
+}
+
 
 
 .play-again {

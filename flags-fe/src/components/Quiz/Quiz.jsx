@@ -134,7 +134,13 @@ export default function Quiz(quizType) {
                     </div>
 
                     {options.length == 0 && <>
-                        <p className={`${styles['greating']} dark`} >Game Over,<br /> You Rocked it!</p>
+
+                        <div className={`${styles['accuracy']} dark`}>
+                            <img src="svg/target-goals-icon.svg" alt="accuracy" />
+                            <p >{((scores / currentStage) * 100).toFixed(2)}%</p>
+                        </div>
+
+                        <p className={`${styles['greating']} dark`} > Game Over,<br /> You Rocked it!</p>
 
                         <button className={`${styles['play-again']} dark`} onClick={() => setIsStarted(false)} >Play Again</button>
                         <Link to="/" className={`${styles['play-again']} dark`}>Home</Link>
