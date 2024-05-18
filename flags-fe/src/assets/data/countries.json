@@ -666,7 +666,7 @@
     "code2": "AQ",
     "code3": "ATA",
     "name": "Antarctica",
-    "capital": "",
+    "capital": "Antarctica",
     "region": "Polar",
     "subregion": "",
     "states": []
@@ -1833,15 +1833,7 @@
       }
     ]
   },
-  {
-    "code2": "BV",
-    "code3": "BVT",
-    "name": "Bouvet Island",
-    "capital": "",
-    "region": "",
-    "subregion": "",
-    "states": []
-  },
+
   {
     "code2": "BR",
     "code3": "BRA",
@@ -1996,61 +1988,7 @@
     "subregion": "Eastern Africa",
     "states": []
   },
-  {
-    "code2": "UM",
-    "code3": "UMI",
-    "name": "United States Minor Outlying Islands",
-    "capital": "",
-    "region": "Americas",
-    "subregion": "Northern America",
-    "states": [
-      {
-        "code": "81",
-        "name": "Baker Island",
-        "subdivision": null
-      },
-      {
-        "code": "84",
-        "name": "Howland Island",
-        "subdivision": null
-      },
-      {
-        "code": "86",
-        "name": "Jarvis Island",
-        "subdivision": null
-      },
-      {
-        "code": "67",
-        "name": "Johnston Atoll",
-        "subdivision": null
-      },
-      {
-        "code": "89",
-        "name": "Kingman Reef",
-        "subdivision": null
-      },
-      {
-        "code": "71",
-        "name": "Midway Islands",
-        "subdivision": null
-      },
-      {
-        "code": "76",
-        "name": "Navassa Island",
-        "subdivision": null
-      },
-      {
-        "code": "95",
-        "name": "Palmyra Atoll",
-        "subdivision": null
-      },
-      {
-        "code": "79",
-        "name": "Wake Island",
-        "subdivision": null
-      }
-    ]
-  },
+
   {
     "code2": "VG",
     "code3": "VGB",
@@ -4997,15 +4935,7 @@
       }
     ]
   },
-  {
-    "code2": "GF",
-    "code3": "GUF",
-    "name": "French Guiana",
-    "capital": "Cayenne",
-    "region": "Americas",
-    "subregion": "South America",
-    "states": []
-  },
+
   {
     "code2": "PF",
     "code3": "PYF",
@@ -5498,15 +5428,7 @@
       }
     ]
   },
-  {
-    "code2": "GP",
-    "code3": "GLP",
-    "name": "Guadeloupe",
-    "capital": "Basse-Terre",
-    "region": "Americas",
-    "subregion": "Caribbean",
-    "states": []
-  },
+
   {
     "code2": "GU",
     "code3": "GUM",
@@ -5831,15 +5753,7 @@
       }
     ]
   },
-  {
-    "code2": "HM",
-    "code3": "HMD",
-    "name": "Heard Island and McDonald Islands",
-    "capital": "",
-    "region": "",
-    "subregion": "",
-    "states": []
-  },
+
   {
     "code2": "VA",
     "code3": "VAT",
@@ -8852,15 +8766,7 @@
       }
     ]
   },
-  {
-    "code2": "MO",
-    "code3": "MAC",
-    "name": "Macau",
-    "capital": "",
-    "region": "Asia",
-    "subregion": "Eastern Asia",
-    "states": []
-  },
+
   {
     "code2": "MK",
     "code3": "MKD",
@@ -9921,15 +9827,7 @@
       }
     ]
   },
-  {
-    "code2": "MQ",
-    "code3": "MTQ",
-    "name": "Martinique",
-    "capital": "Fort-de-France",
-    "region": "Americas",
-    "subregion": "Caribbean",
-    "states": []
-  },
+
   {
     "code2": "MR",
     "code3": "MRT",
@@ -10100,15 +9998,7 @@
       }
     ]
   },
-  {
-    "code2": "YT",
-    "code3": "MYT",
-    "name": "Mayotte",
-    "capital": "Mamoudzou",
-    "region": "Africa",
-    "subregion": "Eastern Africa",
-    "states": []
-  },
+
   {
     "code2": "MX",
     "code3": "MEX",
@@ -11383,15 +11273,7 @@
       }
     ]
   },
-  {
-    "code2": "NC",
-    "code3": "NCL",
-    "name": "New Caledonia",
-    "capital": "Nouméa",
-    "region": "Oceania",
-    "subregion": "Melanesia",
-    "states": []
-  },
+
   {
     "code2": "NZ",
     "code3": "NZL",
@@ -13121,15 +13003,7 @@
     "subregion": "Eastern Europe",
     "states": []
   },
-  {
-    "code2": "RE",
-    "code3": "REU",
-    "name": "Réunion",
-    "capital": "Saint-Denis",
-    "region": "Africa",
-    "subregion": "Eastern Africa",
-    "states": []
-  },
+
   {
     "code2": "RO",
     "code3": "ROU",
@@ -13810,40 +13684,8 @@
       }
     ]
   },
-  {
-    "code2": "BL",
-    "code3": "BLM",
-    "name": "Saint Barthélemy",
-    "capital": "Gustavia",
-    "region": "Americas",
-    "subregion": "Caribbean",
-    "states": []
-  },
-  {
-    "code2": "SH",
-    "code3": "SHN",
-    "name": "Saint Helena",
-    "capital": "Jamestown",
-    "region": "Africa",
-    "subregion": "Western Africa",
-    "states": [
-      {
-        "code": "AC",
-        "name": "Ascension",
-        "subdivision": null
-      },
-      {
-        "code": "HL",
-        "name": "Saint Helena",
-        "subdivision": null
-      },
-      {
-        "code": "TA",
-        "name": "Tristan da Cunha",
-        "subdivision": null
-      }
-    ]
-  },
+
+
   {
     "code2": "KN",
     "code3": "KNA",
@@ -13929,24 +13771,8 @@
       }
     ]
   },
-  {
-    "code2": "MF",
-    "code3": "MAF",
-    "name": "Saint Martin",
-    "capital": "Marigot",
-    "region": "Americas",
-    "subregion": "Caribbean",
-    "states": []
-  },
-  {
-    "code2": "PM",
-    "code3": "SPM",
-    "name": "Saint Pierre and Miquelon",
-    "capital": "Saint-Pierre",
-    "region": "Americas",
-    "subregion": "Northern America",
-    "states": []
-  },
+
+
   {
     "code2": "VC",
     "code3": "VCT",
@@ -19971,11 +19797,7 @@
         "name": "Puerto Rico",
         "subdivision": "outlying territory"
       },
-      {
-        "code": "UM",
-        "name": "United States Minor Outlying Islands",
-        "subdivision": "outlying territory"
-      },
+
       {
         "code": "VI",
         "name": "Virgin Islands, U.S.",

@@ -2,15 +2,22 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
 
+import { useLoading } from "../../hooks/useLoading";
+
+import Quit from "../Quit/Quit";
 import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
+import Loader from "../Loader/Loader";
 
 import styles from "./Quiz.module.css";
 
-export default function Quiz() {
 
+export default function Quiz(quizType) {
+
+ 
     const { selectRandomCountries, randomIndex } = useRandomSelector();
+    const { isLoading, handleLoad } = useLoading();
 
     const [gameList, setGameList] = useState([]);
     const [options, setOptions] = useState([]);
@@ -25,6 +32,7 @@ export default function Quiz() {
 
 
     useEffect(() => {
+       
         isStarted ? startGame() : null
     }, []);
 
@@ -40,14 +48,15 @@ export default function Quiz() {
     }
 
 
-    const answerHandler = (event) => {
-        const choice = event.target.textContent;
+    const answerHandler = (countryCode) => {
+
+        const choice = countryCode
         let updatedList = [];
 
-        choice === country.name ? [
+        choice === country.code3 ? [
             setScores((scores) => scores + 1),
-            updatedList = gameList.filter(country => country.name !== choice),
-            myList.unshift(gameList.find(country => country.name === choice)),
+            updatedList = gameList.filter(country => country.code3 !== choice),
+            myList.unshift(gameList.find(country => country.code3 === choice)),
             setGameList((list) => updatedList),
             setOptions(selectRandomCountries(updatedList, 4))
         ] : setOptions(selectRandomCountries(gameList, 4));
@@ -64,33 +73,73 @@ export default function Quiz() {
     return (
 
         <>
-            {isStarted &&
-                <div className={styles['quiz']}  >
 
-                    <div className={styles['board-container']}>
+      
+
+        <div className={styles['game-header']}>
+            <p className={styles['game-type']}>Geuss the {quizType.type}</p>
+             <Quit/>
+        </div>
+            {(isStarted && isLoading) && <Loader/>}
+            {isStarted && 
+                <div className={styles['quiz']} onLoad={()=>handleLoad(false)} style={{ display: isLoading ? 'none' : 'block' }}     >
+                    <div className={styles['board-container']} >
+                   
                         <FlagsBoard list={myList} {...gameConfig} className="myList" />
                         {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>
 
 
                     <div className={styles['units']}>
-                        <div>
-                            <p>{scores} / {currentStage}</p>
-                        </div>
+                     
+                            <ul >
+                                <li>
+                                    <span>correct</span>
+                                    <p > 
+                                    <img src="svg/tick-mark-icon.svg" alt="true" /> {scores}
+                                        
+                                     </p>
+                                </li>
 
-                        {gameList.length != 0 && <div>
-                            <p>{gameList.length}</p>
-                        </div>}
+                                <li>
+                                    <span>wrong</span>
+                                    <p > 
+                                    <img src="svg/incorrect-icon.svg" alt="false" /> {currentStage - scores}
+                                        
+                                     </p>
+                                </li>
+
+                                <li>
+                                    <span>attempts</span>
+                               
+                                    <p>
+                                    <img src="svg/cursor-hand-icon.svg" alt="try" /> {currentStage}
+                                     </p>
+                                </li>
+                            
+                                   
+                            {gameList.length != 0 && <li>
+                                <span>remaining</span>
+                                <p>
+                                <img src="svg/database-icon.svg" alt="try" />{gameList.length}
+                                </p>
+                            </li>}
+                               
+                            </ul>
+                        
+                       
+
+            
                     </div>
 
                     {options.length == 0 && <>
-                        <p>Congratulations</p>
+                        <p className={styles['greating']} >Game Over,<br /> You Rocked it!</p>
 
                         <button className={styles['play-again']} onClick={() => setIsStarted(false)} >Play Again</button>
                         <Link to="/" className={styles['play-again']}>Home</Link>
 
                     </>}
-                    <Question country={country} options={options} answerHandler={answerHandler} startGame={startGame} />
+                    <Question country={country} options={options} answerHandler={answerHandler} quizType={quizType} />
                 </div>}
 
 
