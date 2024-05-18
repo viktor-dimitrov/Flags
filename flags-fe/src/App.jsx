@@ -5,6 +5,8 @@ import Quiz from "./components/Quiz/Quiz";
 import Home from './components/Home/Home';
 import ListOfCountries from './components/CountriesList/CountriesList';
 
+import './App.css';
+
 function App() {
 
 

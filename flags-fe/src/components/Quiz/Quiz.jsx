@@ -10,6 +10,7 @@ import FlagsBoard from "../FlagsBoard/FlagsBoard";
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
 import Loader from "../Loader/Loader";
 
+import '../../App.css'
 import styles from "./Quiz.module.css";
 
 
@@ -76,7 +77,7 @@ export default function Quiz(quizType) {
 
       
 
-        <div className={styles['game-header']}>
+        <div className={`${styles['game-header']} dark`}>
             <p className={styles['game-type']}>Geuss the {quizType.type}</p>
              <Quit/>
         </div>
@@ -90,7 +91,7 @@ export default function Quiz(quizType) {
                     </div>
 
 
-                    <div className={styles['units']}>
+                    <div className={`${styles['units']} dark`}>
                      
                             <ul >
                                 <li>
@@ -133,10 +134,16 @@ export default function Quiz(quizType) {
                     </div>
 
                     {options.length == 0 && <>
-                        <p className={styles['greating']} >Game Over,<br /> You Rocked it!</p>
 
-                        <button className={styles['play-again']} onClick={() => setIsStarted(false)} >Play Again</button>
-                        <Link to="/" className={styles['play-again']}>Home</Link>
+                        <div className={`${styles['accuracy']} dark`}>
+                            <img src="svg/target-goals-icon.svg" alt="accuracy" />
+                            <p >{((scores / currentStage) * 100).toFixed(2)}%</p>
+                        </div>
+
+                        <p className={`${styles['greating']} dark`} > Game Over,<br /> You Rocked it!</p>
+
+                        <button className={`${styles['play-again']} dark`} onClick={() => setIsStarted(false)} >Play Again</button>
+                        <Link to="/" className={`${styles['play-again']} dark`}>Home</Link>
 
                     </>}
                     <Question country={country} options={options} answerHandler={answerHandler} quizType={quizType} />

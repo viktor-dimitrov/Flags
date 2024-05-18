@@ -1,7 +1,7 @@
 
 .question {
     width:100%;
-    height:60%;
+    height:25em;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@
 
 .flag {
     width:70%;
-    height:40%;
+    height:9em;
     margin-bottom: 1em;
     overflow: hidden;
     
@@ -46,22 +46,9 @@
     margin: 0.2em 0;
     font-size: 1.4em;
     font-weight: 600;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    color: aliceblue;
-    background: rgb(72, 83, 111);
-    background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%);
 }
 
 .correct {
     background-color: green;
-
 }
 
-/* @media (max-width: 700px) {
-    .question {
-        width:90%;
-
-    }
-
-
-} */
