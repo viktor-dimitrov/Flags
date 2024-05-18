@@ -15,7 +15,7 @@ export default function Footer() {
 
         <footer>
 
-            <div className={styles['dev-container']}>
+            <div className={`${styles['dev-container']} dark`}>
 
                 <div className={styles['dev-logo']} >
                     <img src="/svg/dev-logo-no-background.svg" alt="V.Dimitroff" />

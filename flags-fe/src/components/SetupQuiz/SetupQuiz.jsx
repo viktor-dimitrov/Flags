@@ -6,6 +6,7 @@ import countriesData from "../../assets/data/countries.json";
 
 import Loader from "../Loader/Loader";
 
+import '../../App.css';
 import styles from "./SetupQuiz.module.css";
 
 
@@ -61,7 +62,7 @@ export default function SetupQuiz({ startGame }) {
 
             <div className={styles['count-wrapper']}>
                     <p>Questions:</p>
-                    <div className={styles['count-btns']}>
+                    <div className={`${styles['count-btns']} dark`}>
                     <label>
                         <input type="radio" name="count" value="9" onClick={() => handleCountChange(9)} defaultChecked />
                         9
@@ -87,14 +88,14 @@ export default function SetupQuiz({ startGame }) {
 
                     {regions.map(region => 
                         <label key={region} >
-                        <input  className={activeRegion === region.toLocaleLowerCase() ? styles['active'] : null}  type="button" name={region.toLowerCase()} value={region} onClick={() => handleRegionChange(region)} />
+                        <input  className={`${activeRegion === region.toLocaleLowerCase() ? styles['active'] : null} dark`}  type="button" name={region.toLowerCase()} value={region} onClick={() => handleRegionChange(region)} />
                     </label>
                     )}
 
                 </div> 
 
 
-                {gameConfig.region && <button className={styles['start-btn']} type="submit">Start</button>}
+                {gameConfig.region && <button className={`${styles['start-btn']} dark`} type="submit">Start</button>}
               
 
                 {gameConfig.region && <> 

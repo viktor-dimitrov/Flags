@@ -1,4 +1,5 @@
 
+import '../../App.css';
 import styles from "./Question.module.css";
 
 export default function Question ( {country, options, answerHandler, quizType}) {
@@ -19,7 +20,7 @@ export default function Question ( {country, options, answerHandler, quizType}) 
                 </div>
              
                 <div className={styles['options']} >
-                    {options.map((country, index) => <button  key={index} onClick={() => answerHandler(country.code3)} >{ quizType.type == "flag" ? country.name : country.capital}</button>)}
+                    {options.map((country, index) => <button className='dark'  key={index} onClick={() => answerHandler(country.code3)} >{ quizType.type == "flag" ? country.name : country.capital}</button>)}
                 </div>
         </section> 
 

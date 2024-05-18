@@ -7,15 +7,6 @@
     height: 100vh;
 }
 
-/* .home {
-    padding-top: 1em;
-} */
-
-.header {
-    background: rgb(72, 83, 111);
-    background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%);
-    box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.9); 
-}
 
 .header div {
     padding:0.4em;
@@ -23,10 +14,7 @@
 
 .header div h1 {
     font-size: 1.6em;
-    color: aliceblue;
     text-align: center;
-    text-shadow: rgba(255,255,255,0.9) 0px 0px 39px;
-
 }
 
 .flagballs-cont {
@@ -44,36 +32,21 @@
 }
 
 .flagballs img {
-
     object-fit: cover;
-
 }
-
-
 
 
 .home nav ul  {
-    /* background: rgb(72, 83, 111);
-    background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%); */
     margin: 0;
     padding:0;
-    
-  
 }
 
 .home nav ul li {
- 
-   
     display: flex;
-
     justify-content: center;
-
     margin-bottom: 0.4em;
-   
-   
-    
-
 }
+
 
 .home nav ul a {
     display: block;
@@ -83,15 +56,8 @@
     padding: 0 2em;
     font-weight: 600;
     font-size: 1.4em;
-    color: aliceblue;
-    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
-    border: 2px outset black;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    
-    background: rgb(72, 83, 111);
-    background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%);
     letter-spacing: 0.1em;
-    animation: swing 1s infinite alternate;
+    /* animation: swing 1s infinite alternate; */
 }
 
 .boards-cont {
@@ -108,7 +74,7 @@
 }
 
 
-
+/* 
 @keyframes swing {
     0% {
         transform: translateX(-2px);
@@ -118,4 +84,4 @@
         transform: translateX(2px);
       
     }
-}
+} */

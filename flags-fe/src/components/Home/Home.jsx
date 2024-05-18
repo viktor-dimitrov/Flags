@@ -5,7 +5,10 @@ import { useLoading } from "../../hooks/useLoading";
 import Footer from "../Footer/Footer";
 import Loader from "../Loader/Loader";
 
+
+import "../../App.css"; 
 import styles from "./Home.module.css";
+
 
 
 export default function Home () {
@@ -20,7 +23,7 @@ export default function Home () {
                     
                     
 
-                <header className={styles['header']}>
+                <header className={`${styles['header']} dark`}>
                     <div>
                         <h1>Country Quiz</h1>
                     </div>
@@ -40,11 +43,11 @@ export default function Home () {
            
             <nav>
                 <ul>
-                    <li>  <Link to={"/quiz-flags"} >Guess The Flag</Link> </li>
+                    <li className="dark">  <Link to={"/quiz-flags"} >Guess The Flag</Link> </li>
               
-                    <li>  <Link to={"/quiz-capitals"} >Guess The Capital</Link> </li>
+                    <li className="dark">  <Link to={"/quiz-capitals"} >Guess The Capital</Link> </li>
                
-                    <li className={styles['countries-list']} >  <Link to={"/countries-list"} >Countries List</Link> </li>
+                    <li className={`${styles['countries-list']} dark`} >  <Link to={"/countries-list"} >Countries List</Link> </li>
                 </ul>
             </nav>
 
