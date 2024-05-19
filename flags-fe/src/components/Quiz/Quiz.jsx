@@ -128,9 +128,6 @@ export default function Quiz(quizType) {
                                
                             </ul>
                         
-                       
-
-            
                     </div>
 
                     {options.length == 0 && <>
