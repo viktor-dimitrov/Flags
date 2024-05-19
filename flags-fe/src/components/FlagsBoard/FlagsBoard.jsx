@@ -1,4 +1,5 @@
 
+
 import styles from "./FlagsBoard.module.css";
 
 export default function FlagsBoard ({list, region, count, className}) {
