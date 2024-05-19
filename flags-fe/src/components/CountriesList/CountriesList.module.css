@@ -11,9 +11,6 @@ ol {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1em;
-    color:aliceblue;
-    background: rgb(72, 83, 111);
-    background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%);
 }
 
 .game-type {

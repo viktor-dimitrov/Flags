@@ -2,13 +2,14 @@
 import countriesData from "../../assets/data/countries.json";
 import Quit from "../Quit/Quit";
 
+import '../../App.css';
 import styles from "./CountriesList.module.css";
 
 export default function CountriesList () {
 
 return (
     <>
-        <div className={styles['game-header']} >
+        <div className={`${styles['game-header']} dark`} >
             <p className={styles['game-type']}>Countries List</p>
              <Quit/>
         </div>

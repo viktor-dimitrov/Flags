@@ -1,14 +1,20 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import { useLoading } from "../../hooks/useLoading";
 
 import Footer from "../Footer/Footer";
 import Loader from "../Loader/Loader";
 
+
+
+import "../../App.css"; 
 import styles from "./Home.module.css";
 
 
+
 export default function Home () {
+
+    const navigate = useNavigate();
 
     const { isLoading, handleLoad } = useLoading();
 
@@ -20,7 +26,7 @@ export default function Home () {
                     
                     
 
-                <header className={styles['header']}>
+                <header className={`${styles['header']} dark`}>
                     <div>
                         <h1>Country Quiz</h1>
                     </div>
@@ -40,11 +46,15 @@ export default function Home () {
            
             <nav>
                 <ul>
-                    <li>  <Link to={"/quiz-flags"} >Guess The Flag</Link> </li>
+
+                    <li > <button className="dark" onClick={ ()=> navigate('/quiz-flags')} >Guess The Flag</button> </li>
+                    <li > <button className="dark" onClick={ ()=> navigate('/quiz-capitals')} >Guess The Capital</button> </li>
+                  
               
-                    <li>  <Link to={"/quiz-capitals"} >Guess The Capital</Link> </li>
+                    <li className={styles[`countries-list`]} > <button className='dark' onClick={ ()=> navigate('/countries-list')} >Countries List</button> </li>
+        
                
-                    <li className={styles['countries-list']} >  <Link to={"/countries-list"} >Countries List</Link> </li>
+                  
                 </ul>
             </nav>
 
