@@ -78,7 +78,7 @@ export default function Quiz(quizType) {
       
 
         <div className={`${styles['game-header']} dark`}>
-            <p className={styles['game-type']}>Geuss the {quizType.type}</p>
+            <p className={styles['game-type']}>Guess the {quizType.type}</p>
              <Quit/>
         </div>
             {(isStarted && isLoading) && <Loader/>}
