@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
@@ -29,7 +30,8 @@ export default function Quiz(quizType) {
     const [myList, setMyList] = useState([]);
     const [gameConfig, setGameConfig] = useState({
         "region": null,
-        "count": null
+        "count": null,
+        "style": null
     });
 
 
@@ -51,17 +53,28 @@ export default function Quiz(quizType) {
 
 
     const answerHandler = (countryCode) => {
-
+        const currentQuestion = country;
+        console.log(currentQuestion)
         const choice = countryCode
         let updatedList = [];
 
-        choice === country.code3 ? [
-            setScores((scores) => scores + 1),
-            updatedList = gameList.filter(country => country.code3 !== choice),
-            myList.unshift(gameList.find(country => country.code3 === choice)),
-            setGameList((list) => updatedList),
-            setOptions(selectRandomCountries(updatedList, 4))
-        ] : setOptions(selectRandomCountries(gameList, 4));
+       if ( choice === country.code3) { 
+            setScores((scores) => scores + 1);
+            updatedList = gameList.filter(country => country.code3 !== choice);
+            myList.unshift(gameList.find(country => country.code3 === choice));
+            setGameList((list) => updatedList);
+            setOptions(selectRandomCountries(updatedList, 4));
+         } else {
+            if (gameConfig.style == 'survival') {
+                updatedList = gameList.filter(country => country.code3 !== currentQuestion.code3);
+                setGameList((list) => updatedList);
+                myList.unshift({code2: 'none', name: uuidv4()});
+                setOptions(selectRandomCountries(updatedList, 4));
+            } else {
+                setOptions(selectRandomCountries(gameList, 4));
+            }
+        
+        }   
 
         nextStage();
     }

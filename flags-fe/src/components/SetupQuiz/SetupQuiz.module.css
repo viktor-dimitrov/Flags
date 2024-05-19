@@ -29,7 +29,7 @@ input[type="button"].active {
     text-align: center;
 }
 
-.count-wrapper {
+.radio-wrapper {
     width:100%;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ input[type="button"].active {
     justify-content: center;
 }
 
-.count-btns {
+.radio-btns {
     width:100%;
     display: flex;
     justify-content: space-evenly;

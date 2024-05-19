@@ -20,7 +20,8 @@ export default function SetupQuiz({ startGame }) {
 
     const [gameConfig, setGameConfig] = useState({
         "region": "World",
-        "count": 9
+        "count": 16,
+        "style": 'freerun'
     })
 
     const [activeRegion, setActiveRegion] = useState("world");
@@ -45,6 +46,10 @@ export default function SetupQuiz({ startGame }) {
         setGameConfig(config => ({ ...config, count: selectedCount }))
     };
 
+    const handleStyleChange = (selectedStyle) => {
+        setGameConfig(config => ({ ...config, style: selectedStyle }))
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (countries) {
@@ -60,15 +65,15 @@ export default function SetupQuiz({ startGame }) {
         <div className={styles['setup']} >
             <form onSubmit={handleSubmit}>
 
-            <div className={styles['count-wrapper']}>
+            <div className={styles['radio-wrapper']}>
                     <p>Questions:</p>
-                    <div className={`${styles['count-btns']} dark`}>
+                    <div className={`${styles['radio-btns']} dark`}>
                     <label>
-                        <input type="radio" name="count" value="9" onClick={() => handleCountChange(9)} defaultChecked />
+                        <input type="radio" name="count" value="9" onClick={() => handleCountChange(9)}  />
                         9
                     </label>
                     <label>
-                        <input type="radio" name="count" value="16" onClick={() => handleCountChange(16)} />
+                        <input type="radio" name="count" value="16" onClick={() => handleCountChange(16)} defaultChecked />
                         16
                     </label>
                     <label>
@@ -92,6 +97,24 @@ export default function SetupQuiz({ startGame }) {
                     </label>
                     )}
 
+                </div> 
+
+                <div className={styles['radio-wrapper']}>
+                    <p>Game Style:</p>
+                    <div className={`${styles['radio-btns']} dark`}>
+                    <label>
+                        <input type="radio" name="style" value="freerun" onClick={() => handleStyleChange("freerun")} defaultChecked />
+                        FreeRun
+                    </label>
+                    <label>
+                        <input type="radio" name="style" value="sprint" onClick={() => handleStyleChange("sprint")} disabled />
+                        Sprint
+                    </label>
+                    <label>
+                        <input type="radio" name="style" value="survival" onClick={() => handleStyleChange("survival")} />
+                        Survival
+                    </label>
+                    </div>
                 </div> 
 
 
