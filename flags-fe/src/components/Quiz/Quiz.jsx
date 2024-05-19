@@ -9,6 +9,7 @@ import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
 import Loader from "../Loader/Loader";
+import Metrics from "../Metrics/Metrics";
 
 import '../../App.css'
 import styles from "./Quiz.module.css";
@@ -90,47 +91,9 @@ export default function Quiz(quizType) {
                         {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>
 
+                    <Metrics currentStage={currentStage} scores={scores} gameListLength={gameList.length}/> 
 
-                    <div className={`${styles['units']} dark`}>
-                     
-                            <ul >
-                                <li>
-                                    <span>correct</span>
-                                    <p > 
-                                    <img src="svg/tick-mark-icon.svg" alt="true" /> {scores}
-                                        
-                                     </p>
-                                </li>
-
-                                <li>
-                                    <span>wrong</span>
-                                    <p > 
-                                    <img src="svg/incorrect-icon.svg" alt="false" /> {currentStage - scores}
-                                        
-                                     </p>
-                                </li>
-
-                                <li>
-                                    <span>attempts</span>
-                               
-                                    <p>
-                                    <img src="svg/cursor-hand-icon.svg" alt="try" /> {currentStage}
-                                     </p>
-                                </li>
-                            
-                                   
-                            {gameList.length != 0 && <li>
-                                <span>remaining</span>
-                                <p>
-                                <img src="svg/database-icon.svg" alt="try" />{gameList.length}
-                                </p>
-                            </li>}
-                               
-                            </ul>
-                        
-                    </div>
-
-                    {options.length == 0 && <>
+                        {options.length == 0 && <>
 
                         <div className={`${styles['accuracy']} dark`}>
                             <img src="svg/target-goals-icon.svg" alt="accuracy" />

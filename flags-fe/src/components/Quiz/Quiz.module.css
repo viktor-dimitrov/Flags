@@ -31,34 +31,7 @@
 
 
 
-.units {
-   
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 0.4em;
-}
 
-.units ul {
-    display:flex;
-    width: 100%;
-    padding:0;
-    margin: 0;
-    justify-content: space-evenly;
-}
-
-.units p {
-    font-size: 1.2em;
-    display: flex;
-    justify-content: space-evenly;
-    font-family:monospace;
-}
-
-.units p img {
-    display:block;
-    width: 1em;
- 
-}
 
 .accuracy {
     display: flex;
