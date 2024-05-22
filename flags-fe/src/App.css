@@ -4,6 +4,9 @@
 
 
 body {
+    display: flex;
+    justify-content: center;
+
     font-family: "Play", sans-serif;
     font-weight: 400;
     font-style: normal; 
@@ -13,6 +16,10 @@ body {
     background: rgb(118, 120, 125);
     background: linear-gradient(90deg, rgba(118, 120, 125, 1) 10%, rgba(207, 209, 215, 1) 40%, rgba(207, 209, 215, 1) 60%, rgba(118, 120, 125, 1) 90%);
 
+}
+
+#root {
+    width: 100%;
 }
 
 a {
@@ -28,7 +35,7 @@ a {
 }
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     body {
         color: #333;
         background: rgb(118, 120, 125);
@@ -41,4 +48,6 @@ a {
         background: linear-gradient(90deg, rgba(72, 83, 111, 1) 10%, rgba(12, 12, 13, 1) 25%, rgba(12, 12, 13, 1) 75%, rgba(72, 83, 111, 1) 90%);
  
     }
-  }
+  } */
+
+
