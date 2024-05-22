@@ -21,7 +21,7 @@ export default function SetupQuiz({ startGame }) {
     const [gameConfig, setGameConfig] = useState({
         "region": "World",
         "count": 16,
-        "style": 'freerun'
+        "style": 'survival'
     })
 
     const [activeRegion, setActiveRegion] = useState("world");
@@ -103,7 +103,7 @@ export default function SetupQuiz({ startGame }) {
                     <p>Game Style:</p>
                     <div className={`${styles['radio-btns']} dark`}>
                     <label>
-                        <input type="radio" name="style" value="freerun" onClick={() => handleStyleChange("freerun")} defaultChecked />
+                        <input type="radio" name="style" value="freerun" onClick={() => handleStyleChange("freerun")}  />
                         FreeRun
                     </label>
                     <label>
@@ -111,7 +111,7 @@ export default function SetupQuiz({ startGame }) {
                         Sprint
                     </label>
                     <label>
-                        <input type="radio" name="style" value="survival" onClick={() => handleStyleChange("survival")} />
+                        <input type="radio" name="style" value="survival" onClick={() => handleStyleChange("survival")} defaultChecked/>
                         Survival
                     </label>
                     </div>
