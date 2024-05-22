@@ -54,7 +54,6 @@ export default function Quiz(quizType) {
 
     const answerHandler = (countryCode) => {
         const currentQuestion = country;
-        console.log(currentQuestion)
         const choice = countryCode
         let updatedList = [];
 
