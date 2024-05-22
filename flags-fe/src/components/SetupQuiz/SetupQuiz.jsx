@@ -80,7 +80,7 @@ export default function SetupQuiz({ startGame }) {
                         <input type="radio" name="count" value="25" onClick={() => handleCountChange(25)} />
                         25
                     </label>
-                    <label>
+                    <label  className={styles['game36']}>
                         <input type="radio" name="count" value="36" onClick={() => handleCountChange(36)} />
                         36
                     </label>
