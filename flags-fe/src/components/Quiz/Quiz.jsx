@@ -34,7 +34,6 @@ export default function Quiz(quizType) {
         "style": null
     });
 
-
     useEffect(() => {
        
         isStarted ? startGame() : null
@@ -53,29 +52,24 @@ export default function Quiz(quizType) {
 
 
     const answerHandler = (countryCode) => {
+
         const currentQuestion = country;
-        const choice = countryCode
-        let updatedList = [];
-
-       if ( choice === country.code3) { 
-            setScores((scores) => scores + 1);
-            updatedList = gameList.filter(country => country.code3 !== choice);
-            myList.unshift(gameList.find(country => country.code3 === choice));
-            setGameList((list) => updatedList);
-            setOptions(selectRandomCountries(updatedList, 4));
-         } else {
-            if (gameConfig.style == 'survival') {
-                updatedList = gameList.filter(country => country.code3 !== currentQuestion.code3);
-                setGameList((list) => updatedList);
-                myList.unshift({code2: 'none', name: uuidv4()});
-                setOptions(selectRandomCountries(updatedList, 4));
-            } else {
-                setOptions(selectRandomCountries(gameList, 4));
-            }
-        
-        }   
-
+        const isAnswerCorrect = countryCode === country.code3;
+        let updatedList = gameList;
+      
+        if (isAnswerCorrect) {
+          setScores(scores => scores + 1);
+          myList.unshift(gameList.find(country => country.code3 === countryCode));
+          updatedList = gameList.filter(country => country.code3 !== countryCode);
+        } else if (gameConfig.style === 'survival') {
+          myList.unshift({ code2: 'none', name: uuidv4() });
+          updatedList = gameList.filter(country => country.code3 !== currentQuestion.code3);
+        }
+      
+        setGameList(updatedList);
+        setOptions(selectRandomCountries(updatedList, 4));
         nextStage();
+
     }
 
     const nextStage = () => {

@@ -49,6 +49,13 @@
 }
 
 .correct {
-    background-color: green;
+    margin: 4px;
+    padding: 2px;
+    border: 4px solid rgb(66, 250, 66);
 }
 
+.incorrect {
+    margin: 4px;
+    padding: 2px;
+    border: 4px solid rgb(235, 78, 30);
+}
