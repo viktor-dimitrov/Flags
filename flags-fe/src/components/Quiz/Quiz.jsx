@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
@@ -9,6 +10,7 @@ import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
 import Loader from "../Loader/Loader";
+import Metrics from "../Metrics/Metrics";
 
 import '../../App.css'
 import styles from "./Quiz.module.css";
@@ -28,7 +30,8 @@ export default function Quiz(quizType) {
     const [myList, setMyList] = useState([]);
     const [gameConfig, setGameConfig] = useState({
         "region": null,
-        "count": null
+        "count": null,
+        "style": null
     });
 
 
@@ -50,17 +53,27 @@ export default function Quiz(quizType) {
 
 
     const answerHandler = (countryCode) => {
-
+        const currentQuestion = country;
         const choice = countryCode
         let updatedList = [];
 
-        choice === country.code3 ? [
-            setScores((scores) => scores + 1),
-            updatedList = gameList.filter(country => country.code3 !== choice),
-            myList.unshift(gameList.find(country => country.code3 === choice)),
-            setGameList((list) => updatedList),
-            setOptions(selectRandomCountries(updatedList, 4))
-        ] : setOptions(selectRandomCountries(gameList, 4));
+       if ( choice === country.code3) { 
+            setScores((scores) => scores + 1);
+            updatedList = gameList.filter(country => country.code3 !== choice);
+            myList.unshift(gameList.find(country => country.code3 === choice));
+            setGameList((list) => updatedList);
+            setOptions(selectRandomCountries(updatedList, 4));
+         } else {
+            if (gameConfig.style == 'survival') {
+                updatedList = gameList.filter(country => country.code3 !== currentQuestion.code3);
+                setGameList((list) => updatedList);
+                myList.unshift({code2: 'none', name: uuidv4()});
+                setOptions(selectRandomCountries(updatedList, 4));
+            } else {
+                setOptions(selectRandomCountries(gameList, 4));
+            }
+        
+        }   
 
         nextStage();
     }
@@ -78,7 +91,7 @@ export default function Quiz(quizType) {
       
 
         <div className={`${styles['game-header']} dark`}>
-            <p className={styles['game-type']}>Geuss the {quizType.type}</p>
+            <p className={styles['game-type']}>Guess the {quizType.type}</p>
              <Quit/>
         </div>
             {(isStarted && isLoading) && <Loader/>}
@@ -90,50 +103,9 @@ export default function Quiz(quizType) {
                         {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>
 
+                    <Metrics currentStage={currentStage} scores={scores} gameListLength={gameList.length}/> 
 
-                    <div className={`${styles['units']} dark`}>
-                     
-                            <ul >
-                                <li>
-                                    <span>correct</span>
-                                    <p > 
-                                    <img src="svg/tick-mark-icon.svg" alt="true" /> {scores}
-                                        
-                                     </p>
-                                </li>
-
-                                <li>
-                                    <span>wrong</span>
-                                    <p > 
-                                    <img src="svg/incorrect-icon.svg" alt="false" /> {currentStage - scores}
-                                        
-                                     </p>
-                                </li>
-
-                                <li>
-                                    <span>attempts</span>
-                               
-                                    <p>
-                                    <img src="svg/cursor-hand-icon.svg" alt="try" /> {currentStage}
-                                     </p>
-                                </li>
-                            
-                                   
-                            {gameList.length != 0 && <li>
-                                <span>remaining</span>
-                                <p>
-                                <img src="svg/database-icon.svg" alt="try" />{gameList.length}
-                                </p>
-                            </li>}
-                               
-                            </ul>
-                        
-                       
-
-            
-                    </div>
-
-                    {options.length == 0 && <>
+                        {options.length == 0 && <>
 
                         <div className={`${styles['accuracy']} dark`}>
                             <img src="svg/target-goals-icon.svg" alt="accuracy" />

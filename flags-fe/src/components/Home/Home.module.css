@@ -17,6 +17,10 @@
     text-align: center;
 }
 
+.home {
+    flex-direction: column;
+}
+
 .flagballs-cont {
     display: flex;
     align-items: center;
@@ -72,6 +76,28 @@
 
     margin-top: 2em;
 }
+
+@media (min-width: 1000px) {
+
+
+
+    .home {
+        display: flex;
+       flex-direction: row;
+       justify-content: space-around;
+       padding:0 10%;
+ 
+    }
+
+    .flagballs img {
+        max-height: 80vh;
+    }
+
+    .home nav {
+        margin: auto;
+    }
+}
+
 
 
 /* 

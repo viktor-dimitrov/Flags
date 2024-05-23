@@ -29,7 +29,7 @@ input[type="button"].active {
     text-align: center;
 }
 
-.count-wrapper {
+.radio-wrapper {
     width:100%;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ input[type="button"].active {
     justify-content: center;
 }
 
-.count-btns {
+.radio-btns {
     width:100%;
     display: flex;
     justify-content: space-evenly;
@@ -45,6 +45,7 @@ input[type="button"].active {
 
 .region-btns {
     width:80%;
+  
 }
 
 .region-img {
@@ -61,18 +62,20 @@ input[type="button"].active {
     padding: 0 2em;
     font-weight: 600;
     font-size: 1.4em;
-    animation: swing 1s infinite alternate;
     letter-spacing: 0.1em;
     margin: 1em;
 }
 
-@keyframes swing {
-    0% {
-        transform: translateX(-2px);
-       
+  
+@media (max-width: 400px) {
+    .game36 {
+        display: none;
     }
-    100% {
-        transform: translateX(2px);
-      
+}
+
+@media (min-width: 1000px) {
+    .setup {
+        padding: 0 20%;
     }
+   
 }
