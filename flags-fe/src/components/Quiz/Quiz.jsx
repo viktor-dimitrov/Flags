@@ -106,7 +106,7 @@ export default function Quiz(quizType) {
                             <p >{((scores / currentStage) * 100).toFixed(2)}%</p>
                         </div>
 
-                        <p className={`${styles['greating']} dark`} > Game Over,<br /> You Rocked it!</p>
+                        <p className={`${styles['greating']} `} > Game Over</p>
 
                         <button className={`${styles['play-again']} dark`} onClick={() => setIsStarted(false)} >Play Again</button>
                         <Link to="/" className={`${styles['play-again']} dark`}>Home</Link>

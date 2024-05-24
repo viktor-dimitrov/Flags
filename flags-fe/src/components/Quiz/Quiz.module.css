@@ -36,6 +36,7 @@
 .accuracy {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding:1em;
     font-size: 2em;
     gap:1em;
@@ -44,7 +45,7 @@
 
 .accuracy img {
     display:block;
-    width: 4em;
+    width: 2em;
  
 }
 
