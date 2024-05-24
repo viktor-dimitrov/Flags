@@ -10,7 +10,7 @@ form {
     display: flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center;
+  
 }
 
 
@@ -29,22 +29,43 @@ input[type="button"].active {
     text-align: center;
 }
 
+.wrapper {
+    width: 100%;
+    display: flex;
+
+    /* align-items: flex-start; */
+    justify-content: center;
+    padding:0 0.4em;
+    gap:0.4em;
+}
+
 .radio-wrapper {
-    width:100%;
+ 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+ 
+  
+   
+ 
 }
 
 .radio-btns {
-    width:100%;
+    
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
+    padding: 1em 0.4em;
+    margin-top: 0.2em;
+}
+
+.radio-btns label {
+    display: flex;
+
 }
 
 .region-btns {
-    width:80%;
+    width:100%;
+    
   
 }
 
@@ -63,12 +84,12 @@ input[type="button"].active {
     font-weight: 600;
     font-size: 1.4em;
     letter-spacing: 0.1em;
-    margin: 1em;
+    margin: 0.6em;
 }
 
   
 @media (max-width: 400px) {
-    .game36 {
+    .radio-btns .game36 {
         display: none;
     }
 }
