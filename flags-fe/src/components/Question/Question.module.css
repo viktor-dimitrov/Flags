@@ -18,7 +18,7 @@
 
 .flag {
     width:70%;
-    height:9em;
+    /* height:9em; */
     margin-bottom: 1em;
     overflow: hidden;
     
@@ -48,7 +48,29 @@
     font-weight: 600;
 }
 
+
 .correct {
-    background-color: green;
+    border: 2px solid rgb(66, 250, 66);
+    animation: blink 0.2s infinite;
 }
+
+.incorrect {
+    border: 2px solid rgb(235, 78, 30);
+    color:  rgb(235, 78, 30);
+
+}
+
+@keyframes blink {
+    0% {
+        border-color: rgba(66, 250, 66, 1);
+    }
+    50% {
+        border-color: rgba(66, 250, 66, 0);
+    }
+    100% {
+        border-color: rgba(66, 250, 66, 1);
+    }
+}
+
+
 
