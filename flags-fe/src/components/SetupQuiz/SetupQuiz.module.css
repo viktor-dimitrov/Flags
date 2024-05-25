@@ -85,6 +85,7 @@ input[type="button"].active {
     font-size: 1.4em;
     letter-spacing: 0.1em;
     margin: 0.6em;
+    width:60%;
 }
 
   

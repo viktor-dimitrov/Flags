@@ -10,7 +10,7 @@ export default function Metrics ({currentStage, scores, gameListLength}) {
                      
         <ul >
             <li>
-                <span>correct</span>
+               
                 <p > 
                 <img src="svg/tick-mark-icon.svg" alt="true" /> {scores}
                     
@@ -18,7 +18,7 @@ export default function Metrics ({currentStage, scores, gameListLength}) {
             </li>
 
             <li>
-                <span>wrong</span>
+                
                 <p > 
                 <img src="svg/incorrect-icon.svg" alt="false" /> {currentStage - scores}
                     
@@ -26,7 +26,7 @@ export default function Metrics ({currentStage, scores, gameListLength}) {
             </li>
 
             <li>
-                <span>attempts</span>
+                
            
                 <p>
                 <img src="svg/cursor-hand-icon.svg" alt="try" /> {currentStage}
@@ -35,7 +35,7 @@ export default function Metrics ({currentStage, scores, gameListLength}) {
         
                
         {gameListLength != 0 && <li>
-            <span>remaining</span>
+          
             <p>
             <img src="svg/database-icon.svg" alt="try" />{gameListLength}
             </p>

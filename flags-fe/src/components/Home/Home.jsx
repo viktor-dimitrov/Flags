@@ -47,8 +47,8 @@ export default function Home() {
                 <nav>
                     <ul>
 
-                        <li > <button className="dark" onClick={() => navigate('/quiz-flags')} >Guess The Flag</button> </li>
-                        <li > <button className="dark" onClick={() => navigate('/quiz-capitals')} >Guess The Capital</button> </li>
+                        <li > <button className="dark" onClick={() => navigate('/quiz-flags')} >Play Flags</button> </li>
+                        <li > <button className="dark" onClick={() => navigate('/quiz-capitals')} >Play Capitals</button> </li>
 
 
                         <li className={styles[`countries-list`]} > <button className='dark' onClick={() => navigate('/countries-list')} >Countries List</button> </li>

@@ -19,6 +19,7 @@
 
 .home {
     flex-direction: column;
+    position: relative;
 }
 
 .flagballs-cont {
@@ -43,19 +44,22 @@
 .home nav ul  {
     margin: 0;
     padding:0;
+    position: relative;
+    bottom: 2em;
 }
 
 .home nav ul li {
     display: flex;
     justify-content: center;
     margin-bottom: 0.4em;
+   
 }
 
 
 .home nav ul button {
     display: block;
     text-align: center;
-    width: 100%;
+    width: 80%;
     margin:0.2em 0;
     padding: 0 2em;
     font-weight: 600;
