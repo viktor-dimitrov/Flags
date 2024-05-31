@@ -43,3 +43,7 @@ ol {
   
     gap:0.2em;
 }
+
+.country-info button {
+    width:5em;
+}
