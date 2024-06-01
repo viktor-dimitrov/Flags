@@ -21,7 +21,7 @@ export default function SetupQuiz({ startGame }) {
     const [gameConfig, setGameConfig] = useState({
         "region": "World",
         "count": 16,
-        "style": 'freerun'
+        "style": 'survival'
     })
 
     const [activeRegion, setActiveRegion] = useState("world");
@@ -65,28 +65,10 @@ export default function SetupQuiz({ startGame }) {
         <div className={styles['setup']} >
             <form onSubmit={handleSubmit}>
 
-            <div className={styles['radio-wrapper']}>
-                    <p>Questions:</p>
-                    <div className={`${styles['radio-btns']} dark`}>
-                    <label>
-                        <input type="radio" name="count" value="9" onClick={() => handleCountChange(9)}  />
-                        9
-                    </label>
-                    <label>
-                        <input type="radio" name="count" value="16" onClick={() => handleCountChange(16)} defaultChecked />
-                        16
-                    </label>
-                    <label>
-                        <input type="radio" name="count" value="25" onClick={() => handleCountChange(25)} />
-                        25
-                    </label>
-                    <label>
-                        <input type="radio" name="count" value="36" onClick={() => handleCountChange(36)} />
-                        36
-                    </label>
-                    </div>
-                </div> 
-        
+
+
+
+        <div className={styles['wrapper']}>
 
                  <div className={styles['region-btns']}>
                     <p>Region:</p>
@@ -100,22 +82,48 @@ export default function SetupQuiz({ startGame }) {
                 </div> 
 
                 <div className={styles['radio-wrapper']}>
-                    <p>Game Style:</p>
+                    <p>Size:</p>
                     <div className={`${styles['radio-btns']} dark`}>
                     <label>
-                        <input type="radio" name="style" value="freerun" onClick={() => handleStyleChange("freerun")} defaultChecked />
-                        FreeRun
+                        <input type="radio" name="count" value="9" onClick={() => handleCountChange(9)}  />
+                        3x3
+                    </label>
+                    <label>
+                        <input type="radio" name="count" value="16" onClick={() => handleCountChange(16)} defaultChecked />
+                        4x4
+                    </label>
+                    <label>
+                        <input type="radio" name="count" value="25" onClick={() => handleCountChange(25)} />
+                        5x5
+                    </label>
+                    <label  className={styles['game36']}>
+                        <input type="radio" name="count" value="36" onClick={() => handleCountChange(36)} />
+                        6x6
+                    </label>
+                    </div>
+                </div> 
+
+                                
+                <div className={styles['radio-wrapper']}>
+                    <p>Style:</p>
+                    <div className={`${styles['radio-btns']} dark`}>
+                    <label>
+                        <input type="radio" name="style" value="freerun" onClick={() => handleStyleChange("freerun")}  />
+                        Relax
                     </label>
                     <label>
                         <input type="radio" name="style" value="sprint" onClick={() => handleStyleChange("sprint")} disabled />
                         Sprint
                     </label>
                     <label>
-                        <input type="radio" name="style" value="survival" onClick={() => handleStyleChange("survival")} />
+                        <input type="radio" name="style" value="survival" onClick={() => handleStyleChange("survival")} defaultChecked/>
                         Survival
                     </label>
                     </div>
                 </div> 
+
+            </div>
+
 
 
                 {gameConfig.region && <button className={`${styles['start-btn']} dark`} type="submit">Start</button>}

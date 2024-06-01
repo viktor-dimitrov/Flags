@@ -17,6 +17,11 @@
     text-align: center;
 }
 
+.home {
+    flex-direction: column;
+    position: relative;
+}
+
 .flagballs-cont {
     display: flex;
     align-items: center;
@@ -39,19 +44,22 @@
 .home nav ul  {
     margin: 0;
     padding:0;
+    position: relative;
+    bottom: 2em;
 }
 
 .home nav ul li {
     display: flex;
     justify-content: center;
     margin-bottom: 0.4em;
+   
 }
 
 
 .home nav ul button {
     display: block;
     text-align: center;
-    width: 100%;
+    width: 80%;
     margin:0.2em 0;
     padding: 0 2em;
     font-weight: 600;
@@ -72,6 +80,28 @@
 
     margin-top: 2em;
 }
+
+@media (min-width: 1000px) {
+
+
+
+    .home {
+        display: flex;
+       flex-direction: row;
+       justify-content: space-around;
+       padding:0 10%;
+ 
+    }
+
+    .flagballs img {
+        max-height: 80vh;
+    }
+
+    .home nav {
+        margin: auto;
+    }
+}
+
 
 
 /* 
