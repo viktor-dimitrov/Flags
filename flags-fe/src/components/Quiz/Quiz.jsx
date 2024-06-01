@@ -97,7 +97,7 @@ export default function Quiz(quizType) {
                         {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>
 
-                    <Metrics currentStage={currentStage} scores={scores} gameListLength={gameList.length}/> 
+                    <Metrics currentStage={currentStage} scores={scores} gameListLength={gameList.length} isStarted={isStarted}/> 
 
                         {options.length == 0 && <>
 
