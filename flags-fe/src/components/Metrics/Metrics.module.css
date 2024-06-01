@@ -21,10 +21,12 @@
     display: flex;
     justify-content: space-evenly;
     font-family:monospace;
+    font-weight:bold;
 }
 
 .units p img {
     display:block;
     width: 1em;
+    margin-right: 0.2em;
  
 }
