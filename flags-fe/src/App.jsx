@@ -4,8 +4,12 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import Quiz from "./components/Quiz/Quiz";
 import Home from './components/Home/Home';
 import ListOfCountries from './components/CountriesList/CountriesList';
+import CountryDetails from './components/CountryDetails/CountryDetails';
+
+
 
 import './App.css';
+
 
 function App() {
 
@@ -20,6 +24,7 @@ function App() {
           <Route path="/quiz-flags" element={<Quiz type="flag" />} />
           <Route path="/quiz-capitals" element={<Quiz type="capital" />} />
           <Route path="/countries-list" element={<ListOfCountries />} />
+          <Route path="/countries-list/:countryCode2" element={<CountryDetails />} />
         </Routes>
 
     
