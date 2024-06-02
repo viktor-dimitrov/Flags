@@ -21,8 +21,7 @@ function App() {
      
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/quiz-flags" element={<Quiz type="flag" />} />
-          <Route path="/quiz-capitals" element={<Quiz type="capital" />} />
+          <Route path="/quiz" element={<Quiz />} />
           <Route path="/countries-list" element={<ListOfCountries />} />
           <Route path="/countries-list/:countryCode2" element={<CountryDetails />} />
         </Routes>

@@ -29,6 +29,51 @@ input[type="button"].active {
     text-align: center;
 }
 
+ul.games-container {
+    padding:0.2em;
+}
+.games-container li {
+    display:flex;
+    border:1px solid black;
+    padding:0.2em;
+    margin-top: 0.6em;
+}
+
+.game-info {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width:75%;
+}
+
+.game-info h5 {
+    margin:0;
+    
+
+}
+
+.game-info button {
+    width:50%;
+    font-size: 0.8em;
+}
+
+
+.type-img {
+    width:25%;
+}
+.type-img img {
+    display:block;
+    width:100%;
+    object-fit: cover;
+  
+}
+
+.type-btns button {
+    width:30%;
+    height:30%;
+}
+
 .wrapper {
     width: 100%;
     display: flex;
