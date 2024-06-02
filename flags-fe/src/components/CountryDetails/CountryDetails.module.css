@@ -4,7 +4,12 @@
 
 }
 
+.details-header {
+    display: flex;
+}
+
 .details-container .img-container {
     padding: 1em 3em;
 }
+
 

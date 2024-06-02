@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 import countriesData from "../../assets/data/countries.json";
 import { useEffect, useState } from "react";
 
+import '../../App.css';
 import styles from './CountryDetails.module.css';
 
 export default function CountryDetails() {
 
 
+    const navigate = useNavigate();
     const { countryCode2 } = useParams();
 
     const [country, setCountry] = useState(null);
@@ -29,6 +31,10 @@ export default function CountryDetails() {
 
         <>
 
+         <div className={`${styles['details-header']} dark`}>
+            <button className='dark' onClick={()=> navigate('/countries-list')} >Back</button>
+           
+         </div>
         
 
             {country &&

@@ -11,9 +11,11 @@ import FlagsBoard from "../FlagsBoard/FlagsBoard";
 import SetupQuiz from "../SetupQuiz/SetupQuiz";
 import Loader from "../Loader/Loader";
 import Metrics from "../Metrics/Metrics";
+import Greating from '../Greating/Graeting';
 
 import '../../App.css'
 import styles from "./Quiz.module.css";
+
 
 
 export default function Quiz(quizType) {
@@ -97,15 +99,20 @@ export default function Quiz(quizType) {
                         {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>
 
-                    <Metrics currentStage={currentStage} scores={scores} gameListLength={gameList.length}/> 
+                    <Metrics currentStage={currentStage} scores={scores} gameListLength={gameList.length} isStarted={isStarted}/> 
 
                         {options.length == 0 && <>
 
-                        <div className={`${styles['accuracy']} dark`}>
-                            <img src="svg/target-goals-icon.svg" alt="accuracy" />
-                            <p >{((scores / currentStage) * 100).toFixed(2)}%</p>
+                        <div className={`${styles['greating-container']} dark`}>
+                            <div className={`${styles['accuracy']} `}>
+                                <img src="svg/target-goals-icon.svg" alt="accuracy" />
+                                <p >{((scores / currentStage) * 100).toFixed(2)}%</p>
+                            </div>
+
+                            <Greating accuracy={(scores / currentStage) * 100} />
                         </div>
 
+                               
                         <p className={`${styles['greating']} `} > Game Over</p>
 
                         <button className={`${styles['play-again']} dark`} onClick={() => setIsStarted(false)} >Play Again</button>

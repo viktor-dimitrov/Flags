@@ -6,9 +6,9 @@ import Home from './components/Home/Home';
 import ListOfCountries from './components/CountriesList/CountriesList';
 import CountryDetails from './components/CountryDetails/CountryDetails';
 
-
-
 import './App.css';
+
+
 
 
 function App() {
