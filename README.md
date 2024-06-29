@@ -1,7 +1,6 @@
-# Flags
+# Country Quiz Game with Vite & React
 
-#  https://github.com/stefanbinder 
 
-#  https://github.com/hampusborgos
+![](https://github.com/viktor-dimitrov/Flags/blob/main/flags-fe/public/images/screen.png?raw=true)
 
-   <a href='https://pngtree.com/freepng/unveiling-the-beauty-of-our-planet-from-space-generative-with-ai_14573668.html'>png image from pngtree.com/</a>
+## You can try on [https://country-quiz.eu/](https://country-quiz.eu/)
