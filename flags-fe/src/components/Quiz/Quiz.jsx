@@ -18,7 +18,7 @@ import styles from "./Quiz.module.css";
 
 
 
-export default function Quiz(quizType) {
+export default function Quiz() {
 
  
     const { selectRandomCountries, randomIndex } = useRandomSelector();
@@ -31,15 +31,20 @@ export default function Quiz(quizType) {
     const [isStarted, setIsStarted] = useState(false);
     const [myList, setMyList] = useState([]);
     const [gameConfig, setGameConfig] = useState({
+        "quizType": null,
         "region": null,
         "count": null,
         "style": null
     });
 
     useEffect(() => {
-       
         isStarted ? startGame() : null
     }, []);
+
+
+    const quizTypeHandler = (selectedQuizType) => {
+        setGameConfig(config => ({ ...config, quizType: selectedQuizType }));
+    }
 
 
     const startGame = (selectedList, gameConfig) => {
@@ -87,7 +92,7 @@ export default function Quiz(quizType) {
       
 
         <div className={`${styles['game-header']} dark`}>
-            <p className={styles['game-type']}>Guess the {quizType.type}</p>
+            <p className={styles['game-type']}> {!gameConfig.quizType ? "Games" : `Guess the ${gameConfig.quizType}` } </p>
              <Quit/>
         </div>
             {(isStarted && isLoading) && <Loader/>}
@@ -96,7 +101,7 @@ export default function Quiz(quizType) {
                     <div className={styles['board-container']} >
                    
                         <FlagsBoard list={myList} {...gameConfig} className="myList" />
-                        {gameList.length != 0 && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
+                        {(gameList.length != 0 && gameConfig.quizType != "quest") && <FlagsBoard list={gameList} {...gameConfig} className="gameList" />}
                     </div>
 
                     <Metrics currentStage={currentStage} scores={scores} gameListLength={gameList.length} isStarted={isStarted}/> 
@@ -119,11 +124,11 @@ export default function Quiz(quizType) {
                         <Link to="/" className={`${styles['play-again']} dark`}>Home</Link>
 
                     </>}
-                    <Question country={country} options={options} answerHandler={answerHandler} quizType={quizType} />
+                    <Question country={country} options={options} answerHandler={answerHandler} gameConfig={gameConfig} />
                 </div>}
 
 
-            {!isStarted && <> <SetupQuiz startGame={startGame} /> </>}
+            {!isStarted && <> <SetupQuiz startGame={startGame} quizTypeHandler={quizTypeHandler} /> </>}
 
 
         </>

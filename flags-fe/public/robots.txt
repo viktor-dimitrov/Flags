@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.country-quiz.eu/sitemap.xml
+Sitemap: https://country-quiz.eu/sitemap.xml
