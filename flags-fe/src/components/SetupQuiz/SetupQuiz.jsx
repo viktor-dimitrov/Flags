@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
 import { useLoading } from "../../hooks/useLoading";
 
+import { useGameContext } from "../../contexts/GameContext";
+
 import countriesData from "../../assets/data/countries.json";
 
 import Loader from "../Loader/Loader";
@@ -11,9 +13,12 @@ import styles from "./SetupQuiz.module.css";
 
 
 
+
 const regions = ["World", "Europe", "Asia", "Africa", "Americas"]
 
-export default function SetupQuiz({ startGame, quizTypeHandler }) {
+export default function SetupQuiz() {
+
+    const {quizTypeHandler, startGame} = useGameContext();
 
     const { selectRandomCountries } = useRandomSelector();
     const { isLoading, handleLoad } = useLoading();

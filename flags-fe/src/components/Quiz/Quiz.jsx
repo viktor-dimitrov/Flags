@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRandomSelector } from "../../hooks/useRandomSelector";
 
 import { useLoading } from "../../hooks/useLoading";
@@ -8,10 +8,11 @@ import { useLoading } from "../../hooks/useLoading";
 import Quit from "../Quit/Quit";
 import Question from "../Question/Question";
 import FlagsBoard from "../FlagsBoard/FlagsBoard";
-import SetupQuiz from "../SetupQuiz/SetupQuiz";
 import Loader from "../Loader/Loader";
 import Metrics from "../Metrics/Metrics";
 import Greating from '../Greating/Graeting';
+
+import { useGameContext } from "../../contexts/GameContext";
 
 import '../../App.css'
 import styles from "./Quiz.module.css";
@@ -19,6 +20,9 @@ import styles from "./Quiz.module.css";
 
 
 export default function Quiz() {
+
+    const navigate = useNavigate();
+    const { gameConfig, countries } = useGameContext();
 
  
     const { selectRandomCountries, randomIndex } = useRandomSelector();
@@ -30,32 +34,17 @@ export default function Quiz() {
     const [scores, setScores] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
     const [myList, setMyList] = useState([]);
-    const [gameConfig, setGameConfig] = useState({
-        "quizType": null,
-        "region": null,
-        "count": null,
-        "style": null
-    });
 
     useEffect(() => {
-        isStarted ? startGame() : null
-    }, []);
 
-
-    const quizTypeHandler = (selectedQuizType) => {
-        setGameConfig(config => ({ ...config, quizType: selectedQuizType }));
-    }
-
-
-    const startGame = (selectedList, gameConfig) => {
-        setGameConfig(gameConfig);
-        setGameList(selectedList);
+        setGameList(countries);
         setMyList([]);
         setCurrentStage(0);
         setScores(0);
-        setOptions(selectRandomCountries(selectedList, 4));
+        setOptions(selectRandomCountries(countries, 4));
         setIsStarted(true);
-    }
+     
+    }, []);
 
 
     const answerHandler = (countryCode) => {
@@ -89,8 +78,6 @@ export default function Quiz() {
 
         <>
 
-      
-
         <div className={`${styles['game-header']} dark`}>
             <p className={styles['game-type']}> {!gameConfig.quizType ? "Games" : `Guess the ${gameConfig.quizType}` } </p>
              <Quit/>
@@ -120,16 +107,12 @@ export default function Quiz() {
                                
                         <p className={`${styles['greating']} `} > Game Over</p>
 
-                        <button className={`${styles['play-again']} dark`} onClick={() => setIsStarted(false)} >Play Again</button>
+                        <button className={`${styles['play-again']} dark`} onClick={() => navigate("/setup")} >Play Again</button>
                         <Link to="/" className={`${styles['play-again']} dark`}>Home</Link>
 
                     </>}
                     <Question country={country} options={options} answerHandler={answerHandler} gameConfig={gameConfig} />
                 </div>}
-
-
-            {!isStarted && <> <SetupQuiz startGame={startGame} quizTypeHandler={quizTypeHandler} /> </>}
-
 
         </>
     )

@@ -47,7 +47,7 @@ export default function Home() {
                 <nav>
                     <ul>
 
-                        <li > <button className="dark" onClick={() => navigate('/quiz')} >Play</button> </li>
+                        <li > <button className="dark" onClick={() => navigate('/setup')} >Play</button> </li>
                       
 
 
